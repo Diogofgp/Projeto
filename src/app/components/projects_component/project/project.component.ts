@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../api-service/api-service.service';
 
+
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
@@ -13,6 +14,8 @@ export class ProjectComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    /*  console.log(+ this.projects); */
     this.apiService.getProjects().subscribe(api_data => this.projects = api_data);
+    /* console.log(+ this.projects); */
   }
 }

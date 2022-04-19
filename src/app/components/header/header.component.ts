@@ -1,6 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout'
+import { NavigationEnd, Router } from '@angular/router';
+import { delay, filter } from 'rxjs';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @Component({
   selector: 'app-header',
@@ -19,8 +22,7 @@ export class HeaderComponent {
 
   ngAfterViewInit() {
     this.observer
-      .observe(['(max-width: 1000px)'])
-
+      .observe(['(max-width: 800px)'])
       .subscribe((res) => {
         if (res.matches) {
           this.sidenav.mode = 'over';
@@ -30,5 +32,16 @@ export class HeaderComponent {
           this.sidenav.open();
         }
       });
+    /* 
+        this.router.events
+          .pipe(
+            untilDestroyed(this),
+            filter((e) => e instanceof NavigationEnd)
+          )
+          .subscribe(() => {
+            if (this.sidenav.mode === 'over') {
+              this.sidenav.close();
+            }
+          }); */
   }
 }

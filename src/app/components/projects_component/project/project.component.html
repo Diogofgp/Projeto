@@ -1,4 +1,4 @@
-<!-- <div class="mat-grid-list" onclick="">
+<!-- <div onclick="">
     <a href="#" class="list-group-item clearfix" *ngFor="let proj of projects">
         <div class="pull-left">
             <h3 class="list-group-item-heading">Project id: {{proj.id}}</h3>
@@ -9,10 +9,17 @@
             <p class="list-group-item-number">Issues count : {{proj.open_issues_count}}</p>
 
         </div>
-        
+
     </a>
 
 </div> -->
-
-
-<!-- add sample graph -->
+<div *ngFor="let p of projects">
+    <mat-card>
+        <mat-card-title>
+            {{p.name}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            {{p.readme_url}}
+        </mat-card-subtitle>
+    </mat-card>
+</div>

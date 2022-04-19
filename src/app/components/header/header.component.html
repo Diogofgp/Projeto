@@ -1,7 +1,4 @@
 <!-- header -->
-<!-- <nav class="navbar navbar-default">
-
-</nav> -->
 
 <mat-toolbar class="mat-elevation-z8">
 
@@ -9,7 +6,6 @@
         <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
         <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
     </button>
-
 
 
     <div id="header_subtitle">
@@ -37,17 +33,12 @@
 
         <mat-divider></mat-divider>
 
+        <button mat-button class="menu-button" routerLink="/home">
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+        </button>
 
-
-        <div class="kek">
-            <button mat-button class="menu-button">
-                <mat-icon>home</mat-icon>
-                <span class="bruh">Home</span>
-            </button>
-        </div>
-
-
-        <button mat-button class="menu-button">
+        <button mat-button class="menu-button" routerLink="/projects">
             <mat-icon>work_outline</mat-icon>
             <span>Projects</span>
         </button>
@@ -63,9 +54,9 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-        <div class="content mat-elevation-z3">
-            <app-project></app-project>
-        </div>
+
+        <app-project></app-project>
+
 
     </mat-sidenav-content>
 </mat-sidenav-container>
