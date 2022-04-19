@@ -1,5 +1,6 @@
-
+/* 
 export class Project {
+
     public id: number;
     public name: string;
     public description: string;
@@ -11,4 +12,17 @@ export class Project {
         this.id = id;
         this.issues_number = issues_number;
     }
+} */
+
+export interface Iproject {
+    id: number;
+    name: string;
+    description: string;
+    issues_number: number;
+}
+
+export interface Iproject_details {
+    id: number;
+    name: string;
+    description: string;
 }
