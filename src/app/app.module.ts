@@ -8,8 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 //components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ProjectComponent } from './components/projects_component/project/project.component';
-import { ProjectDetailsComponent } from './components/projects_component/project-details/project-details.component';
+import { ProjectComponent } from './components/projects_component/project-list/project-list.component';
+import { ProjectDetailsComponent } from './components/projects_component/project-item/project-item.component';
 
 //graph imports
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
-    MatCardModule
+    MatCardModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

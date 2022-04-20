@@ -32,21 +32,8 @@
   opacity: 0.8;
 }
 
-mat-sidenav-content {
-  /*  height: calc(100vh - 98px); */
-  margin: 16px;
-  margin-left: 30px;
-  /* display: flex; */
-  justify-content: center;
-  align-items: center;
-
-  font-size: 2rem;
-  color: lightgray;
-
-  border-radius: 10px;
-}
-
-/* .content {
+/* mat-sidenav-content {
+  background-color: antiquewhite;
   height: calc(100vh - 98px);
   margin: 16px;
   margin-left: 30px;
@@ -57,8 +44,21 @@ mat-sidenav-content {
   font-size: 2rem;
   color: lightgray;
 
-  border-radius: 10px;
+  border-radius: 20px;
 } */
+
+.cont {
+  /*   background-color: antiquewhite; */
+  height: calc(100vh - 102px);
+  margin: 16px;
+  margin-left: 30px;
+  /* display: ce; */
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: lightgray;
+  border-radius: 10px;
+}
 
 mat-toolbar {
   background-color: #4D4C7D;
@@ -77,7 +77,7 @@ mat-sidenav {
 }
 
 mat-sidenav-container {
-  height: calc(100vh - 98px);
+  height: calc(100vh - 70px);
 }
 
 mat-divider {
@@ -105,10 +105,4 @@ mat-icon {
   margin: 0;
   margin-top: 8px;
   font-weight: normal;
-}
-
-.designation {
-  margin-top: 2px;
-  font-size: 0.7rem;
-  color: lightgrey;
 }

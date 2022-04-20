@@ -1,4 +1,4 @@
-/* 
+
 export class Project {
 
     public id: number;
@@ -12,7 +12,7 @@ export class Project {
         this.id = id;
         this.issues_number = issues_number;
     }
-} */
+}
 
 export interface Iproject {
     id: number;

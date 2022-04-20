@@ -1,0 +1,68 @@
+<!-- <a href="#" class="list-group-item-clearfix" *ngFor="let pElement of projects">
+    <div class="pull-left">
+        <h3 class="list-group-item-heading">Project id: {{pElement.id}}</h3>
+        <h4 class="list-group-item-text">Project : {{pElement.name}}</h4>
+
+        <p class="list-group-item-text">Description: {{pElement.description}}</p>
+        <br>
+        <p class="list-group-item-number">Issues count : {{pElement.open_issues_count}}</p>
+
+    </div>
+
+    <mat-card *ngFor="let pElement of projects">
+        <mat-card-title>
+            {{pElement.name}}
+        </mat-card-title>
+        <mat-card-subtitle>
+
+            {{pElement.readme_url}}
+        </mat-card-subtitle>
+    </mat-card>
+
+</a> -->
+
+
+
+<!-- *ngFor="let p of projects"   [project_details]="pElement"-->
+
+<!-- <mat-card *ngFor="let pElement of projects">
+    <mat-card-title>
+        {{pElement.name}}
+    </mat-card-title>
+    <mat-card-subtitle>
+
+        {{pElement.readme_url}}
+    </mat-card-subtitle>
+</mat-card> -->
+
+<!-- <mat-selection-list #shoes [multiple]="false">
+    <mat-list-option *ngFor="let pElement of projects" [value]="pElement">
+        <mat-card-title>
+            {{pElement.name}}
+        </mat-card-title>
+        <mat-card-subtitle>
+
+            {{pElement.readme_url}}
+        </mat-card-subtitle>
+    </mat-list-option>
+</mat-selection-list> -->
+
+<mat-nav-list>
+
+    <app-project-item *ngFor="let pElement of projectList" [project_item]="pElement"
+        (projectWasSelected)="onProjectSelected(pElement)">
+
+        <!--  <a matLine href="...">
+                Title: {{pElement.name}}
+                <br>
+                Description: {{pElement.description}}
+                <mat-divider></mat-divider>
+            </a>
+            <button mat-icon-button (click)="showInfo(link)">
+                <mat-icon>info</mat-icon>
+            </button> -->
+
+    </app-project-item>
+
+
+</mat-nav-list>
