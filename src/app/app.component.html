@@ -1,1 +1,72 @@
-<app-header></app-header>
+<mat-toolbar class="mat-elevation-z8">
+
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+        <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>
+
+
+    <div id="header_subtitle">
+        <span>{{subtitle}}</span>
+    </div>
+
+    <img id="gitlab_logo" width="40" src="../../assets/gitlab.svg" />
+
+    <div class="spacer"></div>
+    <a href="https://www.atlanse.pt/en" title="Atlanse" id="atlanse_logo">
+        <div>
+            <img src="../../assets/logo.svg" />
+        </div>
+    </a>
+</mat-toolbar>
+
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav">
+        <h2>Menu</h2>
+        <mat-divider></mat-divider>
+
+        <!--    <router-outlet></router-outlet> -->
+
+        <button mat-button class="menu-button" routerLink="/home">
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+        </button>
+
+        <button mat-button class="menu-button" routerLink="/projects">
+            <mat-icon>work_outline</mat-icon>
+            <span>Projects</span>
+        </button>
+
+        <button mat-button class="menu-button" routerLink="/users">
+            <mat-icon>person</mat-icon>
+            <span>Users</span>
+        </button>
+
+        <mat-divider></mat-divider>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+        <div class="cont">
+            <router-outlet></router-outlet>
+            <!--    <app-project-list></app-project-list> -->
+        </div>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+<!-- <div class="toolbar" role="banner">
+    <img id="gitlab_logo" width="50" src="../../assets/gitlab.svg" />
+    <div id="header_subtitle">
+        <span>{{subtitle}}</span>
+    </div>
+    <div class="spacer"></div>
+    <a href="https://www.atlanse.pt/en" title="Atlanse" id="atlanse_logo">
+        <div>
+            <img src="../../assets/logo.svg" />
+        </div>
+    </a>
+</div> -->

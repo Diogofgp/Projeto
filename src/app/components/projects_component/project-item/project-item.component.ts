@@ -17,8 +17,6 @@ export class ProjectDetailsComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-
-
     /* this.apiService.getProjects().subscribe(api_data => this.project_item = api_data); */
   }
 

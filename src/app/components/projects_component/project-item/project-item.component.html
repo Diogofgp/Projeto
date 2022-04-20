@@ -2,11 +2,16 @@
             <mat-icon>info</mat-icon>
         </button> -->
 
-<mat-list-item>
+<mat-list-item class="altura">
     <a matLine href="..." (click)="onSelected()">
         Title: {{project_item.name}}
         <br>
         Description: {{project_item.description}}
-        <mat-divider></mat-divider>
+        <br>
+        Issues: {{project_item.open_issues_count}}
+
     </a>
+
+
+
 </mat-list-item>

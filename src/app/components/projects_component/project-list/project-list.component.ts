@@ -2,13 +2,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Project } from 'src/app/interfaces';
 import { ApiService } from '../../../api-service/api-service.service';
 import { Subscription } from 'rxjs';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.css']
 })
-export class ProjectComponent implements OnInit {
+export class ProjectListComponent implements OnInit {
 
   @Output() projectWasSelected = new EventEmitter<Project>();
 

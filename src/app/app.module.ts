@@ -7,8 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 //components
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { ProjectComponent } from './components/projects_component/project-list/project-list.component';
+import { ProjectListComponent } from './components/projects_component/project-list/project-list.component';
 import { ProjectDetailsComponent } from './components/projects_component/project-item/project-item.component';
 
 //graph imports
@@ -24,14 +23,19 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { UsersComponent } from './components/users/users.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    ProjectComponent,
-    ProjectDetailsComponent
+    ProjectListComponent,
+    ProjectDetailsComponent,
+    HomeComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,11 @@ import { MatListModule } from '@angular/material/list';
     MatButtonModule,
     MatDividerModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+
+    //router
+    AppRoutingModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
