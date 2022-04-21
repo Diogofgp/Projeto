@@ -23,10 +23,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
-import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { UsersComponent } from './components/users/users.component';
 import { AppRoutingModule } from './app-routing.module';
+import { GraphsComponent } from './components/graphs/graphs.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { ProjectsComponent } from './components/projects_component/projects.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { AppRoutingModule } from './app-routing.module';
     ProjectListComponent,
     ProjectDetailsComponent,
     HomeComponent,
-    UsersComponent
+    UsersComponent,
+    GraphsComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatDividerModule,
     MatCardModule,
     MatListModule,
+    MatGridListModule,
 
     //router
     AppRoutingModule

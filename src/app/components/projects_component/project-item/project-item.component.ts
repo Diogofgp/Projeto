@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from 'src/app/api-service/api-service.service';
-import { Project } from 'src/app/interfaces';
+import { Project } from '../project.model';
 import { Subscription } from 'rxjs';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-item',
@@ -10,18 +11,25 @@ import { Subscription } from 'rxjs';
 })
 export class ProjectDetailsComponent implements OnInit {
   @Input() project_item: Project;
-  @Output() projectSelected = new EventEmitter();
+  @Input() index: number;
 
-  subscription: Subscription;
+  /*  @Output() projectSelected = new EventEmitter(); */
 
-  constructor(private apiService: ApiService) { }
+
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     /* this.apiService.getProjects().subscribe(api_data => this.project_item = api_data); */
   }
 
-  onSelected() {
-    this.projectSelected.emit();
+  onEditRecipe() {
+    this.router.navigate(['project_details'], { relativeTo: this.route });
+    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
+
+  /*  onSelected() {
+     this.projectSelected.emit();
+   } */
 
 }

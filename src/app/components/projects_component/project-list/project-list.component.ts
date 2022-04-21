@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Project } from 'src/app/interfaces';
+import { Project } from '../project.model';
 import { ApiService } from '../../../api-service/api-service.service';
 import { Subscription } from 'rxjs';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -34,5 +34,6 @@ export class ProjectListComponent implements OnInit {
   onProjectSelected(project_item: Project) {
     this.projectWasSelected.emit(project_item);
   }
+
 
 }

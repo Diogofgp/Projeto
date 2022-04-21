@@ -3,15 +3,30 @@
         </button> -->
 
 <mat-list-item class="altura">
-    <a matLine href="..." (click)="onSelected()">
+
+
+    <a matLine style="cursor: pointer;" [routerLink]="[index]">
+        Title: {{project_item.name}}
+        <br>
+        Description: {{project_item.description}}
+        <br>
+        Issues: {{project_item.open_issues_count}}
+        <br>
+        <mat-divider></mat-divider>
+    </a>
+    <!-- <button mat-icon-button (click)="showInfo(link)">
+        <mat-icon>info</mat-icon>
+    </button> -->
+
+    <!--  <a (click)="onSelected()">
+
+
         Title: {{project_item.name}}
         <br>
         Description: {{project_item.description}}
         <br>
         Issues: {{project_item.open_issues_count}}
 
-    </a>
-
-
+    </a> -->
 
 </mat-list-item>

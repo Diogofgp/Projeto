@@ -49,19 +49,21 @@
 
 <mat-nav-list>
 
-    <app-project-item *ngFor="let pElement of projectList" [project_item]="pElement"
+    <app-project-item *ngFor="let pElement of projectList; let i = index" [project_item]="pElement" [index]="i"
         (projectWasSelected)="onProjectSelected(pElement)">
 
-        <!--  <a matLine href="...">
-                Title: {{pElement.name}}
-                <br>
-                Description: {{pElement.description}}
-                <mat-divider></mat-divider>
-            </a>
-            <button mat-icon-button (click)="showInfo(link)">
-                <mat-icon>info</mat-icon>
-            </button> -->
+        <!-- <div class="col-md-7">
+            <app-project-details *ngIf="selectedProject; else infoText" [project]="selectedProject">
+
+            </app-project-details>
+            <ng-template #infoText>
+                <p>Please select a project</p>
+            </ng-template>
+        </div> -->
+
 
     </app-project-item>
+
+
 
 </mat-nav-list>
