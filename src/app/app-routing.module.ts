@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GraphsComponent } from './components/graphs/graphs.component';
 import { HomeComponent } from './components/home/home.component';
-import { ProjectDetailsComponent } from './components/projects_component/project-item/project-item.component';
+import { ProjectDetailsComponent } from './components/projects_component/project-details/project-details.component';
+import { ProjectItemComponent } from './components/projects_component/project-item/project-item.component';
 import { ProjectListComponent } from './components/projects_component/project-list/project-list.component';
 import { ProjectsComponent } from './components/projects_component/projects.component';
 import { UsersComponent } from './components/users/users.component';
@@ -20,11 +21,12 @@ const routes: Routes = [
   {
     path: 'projects',
     component: ProjectsComponent,
-    /* children: [
-      { path: '', component: ProjectsComponent },
-      { path: ':id', component: ProjectDetailsComponent },
-    ], */
 
+    /* children: [
+      { path: '', component: ProjectListComponent },
+      { path: ':id', component: ProjectItemComponent },
+      { path: ':id/project_details', component: ProjectDetailsComponent },
+    ] */
   },
   {
     path: 'users',
@@ -34,7 +36,9 @@ const routes: Routes = [
     path: 'graphs',
     component: GraphsComponent,
   },
-  { path: 'project_details/:id', component: ProjectDetailsComponent },
+
+  { path: ':id/project_details', component: ProjectDetailsComponent },
+  /*   { path: ':id/project_details', component: ProjectDetailsComponent }, */
   /* {
     path: '**',
     component: NotFoundComponent,

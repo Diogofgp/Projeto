@@ -21,10 +21,15 @@ export class ProjectDetailsComponent implements OnInit {
     this.route.params
       .subscribe(
         (params: Params) => {
-          this.id = params['id'];
+          this.id = +params['id'];
           this.project = this.apiService.getSingleProject(this.id);
         }
       );
+  }
+
+  onCheckDetails() {
+    this.router.navigate(['project_details', this.id]);
+    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
 
 }

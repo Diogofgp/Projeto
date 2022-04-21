@@ -9,7 +9,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
   templateUrl: './project-item.component.html',
   styleUrls: ['./project-item.component.css']
 })
-export class ProjectDetailsComponent implements OnInit {
+export class ProjectItemComponent implements OnInit {
   @Input() project_item: Project;
   @Input() index: number;
 
@@ -21,7 +21,8 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   onProjectSelected() {
-    this.router.navigate(['project_details', this.project_item.id], { relativeTo: this.route });
+    console.log(this.index)
+    this.router.navigate([this.project_item.id, 'project_details',]);
     console.log(this.project_item.id)
     // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }

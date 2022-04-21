@@ -5,7 +5,9 @@
 <mat-list-item class="altura">
 
 
-    <a matLine style="cursor: pointer;" [routerLink]="[index]">
+    <!--  matLine style="cursor: pointer;" 
+    [routerLink]="[index]" routerLinkActive="active" -->
+    <a>
         Title: {{project_item.name}}
         <br>
         Description: {{project_item.description}}
@@ -14,9 +16,9 @@
         <br>
         <mat-divider></mat-divider>
     </a>
-    <!-- <button mat-icon-button (click)="showInfo(link)">
+    <button mat-icon-button (click)="onProjectSelected()">
         <mat-icon>info</mat-icon>
-    </button> -->
+    </button>
 
     <!--  <a (click)="onSelected()">
 

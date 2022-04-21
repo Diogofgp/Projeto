@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 //components
 import { AppComponent } from './app.component';
 import { ProjectListComponent } from './components/projects_component/project-list/project-list.component';
-import { ProjectDetailsComponent } from './components/projects_component/project-item/project-item.component';
 
 //graph imports
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,6 +28,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { GraphsComponent } from './components/graphs/graphs.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ProjectsComponent } from './components/projects_component/projects.component';
+import { ProjectDetailsComponent } from './components/projects_component/project-details/project-details.component';
+import { ProjectItemComponent } from './components/projects_component/project-item/project-item.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ProjectsComponent } from './components/projects_component/projects.comp
     HomeComponent,
     UsersComponent,
     GraphsComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    ProjectItemComponent
   ],
   imports: [
     BrowserModule,
