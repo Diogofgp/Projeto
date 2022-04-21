@@ -49,8 +49,7 @@
 
 <mat-nav-list>
 
-    <app-project-item *ngFor="let pElement of projectList; let i = index" [project_item]="pElement" [index]="i"
-        (projectWasSelected)="onProjectSelected(pElement)">
+    <app-project-item *ngFor="let pElement of projectList; let i = index" [project_item]="pElement" [index]="i">
 
         <!-- <div class="col-md-7">
             <app-project-details *ngIf="selectedProject; else infoText" [project]="selectedProject">

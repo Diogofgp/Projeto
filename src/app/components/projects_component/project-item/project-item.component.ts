@@ -14,17 +14,15 @@ export class ProjectDetailsComponent implements OnInit {
   @Input() index: number;
 
   /*  @Output() projectSelected = new EventEmitter(); */
-
-
-
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     /* this.apiService.getProjects().subscribe(api_data => this.project_item = api_data); */
   }
 
-  onEditRecipe() {
-    this.router.navigate(['project_details'], { relativeTo: this.route });
+  onProjectSelected() {
+    this.router.navigate(['project_details', this.project_item.id], { relativeTo: this.route });
+    console.log(this.project_item.id)
     // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
 

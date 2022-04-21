@@ -20,10 +20,10 @@ const routes: Routes = [
   {
     path: 'projects',
     component: ProjectsComponent,
-    children: [
+    /* children: [
       { path: '', component: ProjectsComponent },
       { path: ':id', component: ProjectDetailsComponent },
-    ],
+    ], */
 
   },
   {
@@ -34,7 +34,7 @@ const routes: Routes = [
     path: 'graphs',
     component: GraphsComponent,
   },
-  { path: ':id', component: ProjectDetailsComponent },
+  { path: 'project_details/:id', component: ProjectDetailsComponent },
   /* {
     path: '**',
     component: NotFoundComponent,

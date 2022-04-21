@@ -24,8 +24,6 @@ export class GraphsComponent implements OnInit {
 
   constructor(private apiService: ApiService) { Chart.register(...registerables) }
 
-
-
   ngOnInit() {
     this.subscription = this.apiService.getProjects()
       .subscribe(

@@ -3,6 +3,7 @@ import { Project } from '../project.model';
 import { ApiService } from '../../../api-service/api-service.service';
 import { Subscription } from 'rxjs';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-list',
@@ -16,7 +17,7 @@ export class ProjectListComponent implements OnInit {
   public projectList = [];
   subscription: Subscription;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
     this.subscription = this.apiService.getProjects()
@@ -30,10 +31,12 @@ export class ProjectListComponent implements OnInit {
     //this.apiService.getProjects().subscribe(api_data => this.projectList = api_data);
     /* console.log(+ this.projects); */
   }
-
-  onProjectSelected(project_item: Project) {
-    this.projectWasSelected.emit(project_item);
-  }
+  /* 
+    onProjectSelected(project_item: Project) {
+      console.log(project_item)
+      this.router.navigate(['project_details', project_item.id]);
+  
+    } */
 
 
 }
