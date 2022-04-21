@@ -10,7 +10,7 @@ import { Project } from '../components/projects_component/project.model';
 export class ApiService {
 
   private auth_token: string = "_XWZ5tg8JMenFWpRVsXD";
-  //private projeurl: string = 'http://10.0.0.253:8181/api/v4/projects';
+  private url: string = 'http://10.0.0.253:8181/api/v4';
 
   private projects: Project[] = [];
 
@@ -23,7 +23,26 @@ export class ApiService {
       'Authorization': `Bearer ${this.auth_token}`
     }
 
-    return this.http.get<Project[]>('http://10.0.0.253:8181/api/v4/projects', { headers: headers });
+    return this.http.get<Project[]>(`${this.url}/projects`, { headers: headers });
+  }
+
+  public getProjectById(index: number) {
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    }
+
+    return this.http.get<Project[]>(`${this.url}/projects/${index}`, { headers: headers });
+  }
+
+  public getUsers() {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    }
+
+    return this.http.get<any[]>(`${this.url}/users`, { headers: headers });
   }
 
 
@@ -31,7 +50,7 @@ export class ApiService {
     this.projects = projects;
   }
 
-  getSingleProject(index: number) {
+  getProjectId(index: number) {
     return this.projects[index];
   }
 

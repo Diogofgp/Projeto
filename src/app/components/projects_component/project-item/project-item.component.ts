@@ -14,16 +14,15 @@ export class ProjectItemComponent implements OnInit {
   @Input() index: number;
 
   /*  @Output() projectSelected = new EventEmitter(); */
-  constructor(private router: Router, private route: ActivatedRoute) { }
 
-  ngOnInit() {
-    /* this.apiService.getProjects().subscribe(api_data => this.project_item = api_data); */
-  }
+  constructor(private router: Router) { }
+
+  ngOnInit() { }
 
   onProjectSelected() {
-    console.log(this.index)
+    /*   console.log(this.index) */
     this.router.navigate([this.project_item.id, 'project_details',]);
-    console.log(this.project_item.id)
+    /* console.log(this.project_item.id) */
     // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
 

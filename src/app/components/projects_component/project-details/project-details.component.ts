@@ -10,8 +10,8 @@ import { Project } from '../project.model';
 })
 export class ProjectDetailsComponent implements OnInit {
 
-  project: Project;
   id: number;
+  project: Project;
 
   constructor(private apiService: ApiService,
     private route: ActivatedRoute,
@@ -22,7 +22,7 @@ export class ProjectDetailsComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
-          this.project = this.apiService.getSingleProject(this.id);
+          this.project = this.apiService.getProjectId(this.id);
         }
       );
   }
@@ -30,6 +30,11 @@ export class ProjectDetailsComponent implements OnInit {
   onCheckDetails() {
     this.router.navigate(['project_details', this.id]);
     // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
+  }
+
+  getProjectDetails() {
+    console.log(this.apiService.getProjectById(this.id));
+    return this.apiService.getProjectById(this.id);
   }
 
 }
