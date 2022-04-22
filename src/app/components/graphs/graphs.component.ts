@@ -50,7 +50,7 @@ export class GraphsComponent implements OnInit {
       .subscribe(
         (projectList: Project[]) => {
           this.projectList = projectList;
-          console.log(projectList);
+          //console.log(projectList);
           this.idProj = this.projectList.map((proj: any) => proj.id)
           this.nameProj = this.projectList.map((proj: any) => proj.name)
           this.issuesProj = this.projectList.map((proj: any) => proj.open_issues_count)

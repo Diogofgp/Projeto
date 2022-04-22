@@ -24,7 +24,7 @@ export class ProjectListComponent implements OnInit {
       .subscribe(
         (projectList: Project[]) => {
           this.projectList = projectList;
-          /*  console.log(projectList); */
+          //console.log(projectList);
         }
       );
 

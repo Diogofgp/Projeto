@@ -32,6 +32,7 @@ import { ProjectDetailsComponent } from './components/projects_component/project
 import { ProjectItemComponent } from './components/projects_component/project-item/project-item.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

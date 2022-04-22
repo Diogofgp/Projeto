@@ -54,6 +54,14 @@ export class ApiService {
     return this.projects[index];
   }
 
+  public getIssues(index: number) {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    }
+
+    return this.http.get<any[]>(`${this.url}/projects/${index}/issues`, { headers: headers });
+  }
 
 
   /* public getProjectsDetails(): Observable<Project> {
