@@ -30,7 +30,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { ProjectsComponent } from './components/projects_component/projects.component';
 import { ProjectDetailsComponent } from './components/projects_component/project-details/project-details.component';
 import { ProjectItemComponent } from './components/projects_component/project-item/project-item.component';
-
+import { MatMenuModule } from '@angular/material/menu';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -58,9 +59,10 @@ import { ProjectItemComponent } from './components/projects_component/project-it
     MatCardModule,
     MatListModule,
     MatGridListModule,
-
     //router
-    AppRoutingModule
+    AppRoutingModule,
+    MatMenuModule,
+    LayoutModule
 
   ],
   providers: [],
