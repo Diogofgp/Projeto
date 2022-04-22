@@ -11,6 +11,8 @@ import { Project } from '../projects_component/project.model';
 })
 export class GraphsComponent implements OnInit {
 
+  //SUPPPPP
+
   //chart vars
   idProj: any;
   nameProj: any;
