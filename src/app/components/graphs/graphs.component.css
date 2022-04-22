@@ -6,3 +6,19 @@
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
 }
+
+.piechart {
+    display: block;
+    max-width: 800px;
+    max-height: 500px;
+    width: auto;
+    height: auto;
+}
+
+.barchart {
+    display: block;
+    max-width: 600px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+}

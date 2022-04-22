@@ -11,9 +11,27 @@ import { Project } from '../projects_component/project.model';
 })
 export class GraphsComponent implements OnInit {
 
-  //SUPPPPP
+  //Chart Colours
 
-  //chart vars
+  barColors = [
+    "#b91d47",
+    "#00aba9",
+    "#2b5797",
+    "#e8c3b9",
+    "#1e7145",
+    "#592E83",
+    "#FBC740",
+    "#66D2D6",
+    "#F51720",
+    "#0000FF",
+    "#000C66",
+    "#68BBE3",
+    "#81B622",
+    "#59981A",
+    "#DBA40E"
+  ];
+
+  //Chart Vars
   idProj: any;
   nameProj: any;
   issuesProj: any;
@@ -47,12 +65,26 @@ export class GraphsComponent implements OnInit {
                 {
                   label: 'IDs',
                   data: this.issuesProj,
-                  borderWidth: 3,
-                  backgroundColor: 'rgba(93, 175, 89, 0.1)',
+                  borderWidth: 0,
+                  backgroundColor: this.barColors,
                   borderColor: '#3e95cd',
                 },
               ],
             },
+            options: {
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Project IDs',
+
+                },
+                legend: {
+                  display: true,
+                  position: 'right',
+
+                }
+              }
+            }
           });
 
           //BAR CHART
@@ -65,12 +97,26 @@ export class GraphsComponent implements OnInit {
                 {
                   label: 'StarCount',
                   data: this.starcountProj,
-                  borderWidth: 3,
-                  backgroundColor: 'rgba(93, 175, 89, 0.1)',
+                  borderWidth: 0,
+                  backgroundColor: this.barColors,
                   borderColor: '#3e95cd',
                 },
               ],
             },
+            options: {
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Project Stars',
+
+                },
+                legend: {
+                  display: false,
+                  position: 'right',
+
+                }
+              }
+            }
           });
 
         }
