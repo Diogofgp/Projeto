@@ -22,3 +22,22 @@
     width: auto;
     height: auto;
 }
+
+.radarchart {
+    display: block;
+    max-width: 600px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+}
+
+.matDivider {
+    border-top-width: 2px;
+    border-top-style: dashed;
+}
+
+.gridList {
+    max-width: 1000px;
+    max-height: 1000px;
+
+}

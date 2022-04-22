@@ -38,6 +38,7 @@ export class GraphsComponent implements OnInit {
   starcountProj: any;
   pieChart: any = []
   barChart: any = []
+  radarChart: any = []
 
   subscription: Subscription;
   public projectList = [];
@@ -118,6 +119,40 @@ export class GraphsComponent implements OnInit {
               }
             }
           });
+
+          //RADAR CHART
+
+          this.radarChart = new Chart('radarcanvas', {
+            type: 'radar',
+            data: {
+              labels: this.nameProj,
+              datasets: [
+                {
+                  label: 'StarCount',
+                  data: this.starcountProj,
+                  borderWidth: 0,
+                  backgroundColor: this.barColors,
+                  borderColor: '#3e95cd',
+                },
+              ],
+            },
+            options: {
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Project Stars',
+
+                },
+                legend: {
+                  display: false,
+                  position: 'right',
+
+                }
+              }
+            }
+          });
+
+
 
         }
       );
