@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //http
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 //components
 import { AppComponent } from './app.component';
@@ -32,6 +32,8 @@ import { ProjectDetailsComponent } from './components/projects_component/project
 import { ProjectItemComponent } from './components/projects_component/project-item/project-item.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NetworkInterceptor } from './services/network-interceptor';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     UsersComponent,
     GraphsComponent,
     ProjectsComponent,
-    ProjectItemComponent
+    ProjectItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,10 +64,15 @@ import { LayoutModule } from '@angular/cdk/layout';
     //router
     AppRoutingModule,
     MatMenuModule,
-    LayoutModule
+    LayoutModule,
+    MatProgressSpinnerModule
 
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: NetworkInterceptor,
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

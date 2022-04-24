@@ -6,6 +6,7 @@ import { BreakpointObserver } from '@angular/cdk/layout'
 import { NavigationEnd, Router } from '@angular/router';
 import { delay, filter } from 'rxjs';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { LoadingService } from './services/loading';
 
 @UntilDestroy()
 @Component({
@@ -19,8 +20,10 @@ export class AppComponent {
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
+  loading$ = this.loader.loading$;
 
-  constructor(private observer: BreakpointObserver, private router: Router) { }
+
+  constructor(private observer: BreakpointObserver, private router: Router, public loader: LoadingService) { }
 
   ngAfterViewInit() {
     this.observer

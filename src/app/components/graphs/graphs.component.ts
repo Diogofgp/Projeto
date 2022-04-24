@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { Subscription } from 'rxjs';
-import { ApiService } from 'src/app/api-service/api-service.service';
+import { ApiService } from 'src/app/services/api-service/api-service.service';
+import { LoadingService } from 'src/app/services/loading';
 import { Project } from '../projects_component/project.model';
 
 @Component({
@@ -22,7 +23,10 @@ export class GraphsComponent implements OnInit {
   subscription: Subscription;
   public projectList = [];
 
-  constructor(private apiService: ApiService) { Chart.register(...registerables) }
+  loading$ = this.loader.loading$;
+
+
+  constructor(private apiService: ApiService, public loader: LoadingService) { Chart.register(...registerables) }
 
   ngOnInit() {
     this.subscription = this.apiService.getProjects()

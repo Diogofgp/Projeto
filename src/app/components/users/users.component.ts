@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ApiService } from 'src/app/api-service/api-service.service';
+import { ApiService } from 'src/app/services/api-service/api-service.service';
+import { LoadingService } from 'src/app/services/loading';
 import { User } from './users.model';
 
 @Component({
@@ -11,10 +12,10 @@ import { User } from './users.model';
 export class UsersComponent implements OnInit {
 
   sub: Subscription;
-
   public usersList = [];
+  loading$ = this.loader.loading$;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, public loader: LoadingService) { }
 
   ngOnInit(): void {
 
