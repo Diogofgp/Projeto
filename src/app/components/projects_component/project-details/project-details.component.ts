@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { ApiService } from 'src/app/api-service/api-service.service';
+import { ApiService } from 'src/app/services/api-service/api-service.service';
 import { Project } from '../project.model';
 
 @Component({
@@ -26,15 +26,14 @@ export class ProjectDetailsComponent implements OnInit {
         }
       );
   }
+  /* 
+    onCheckDetails() {
+      this.router.navigate(['project_details', this.id]);
+    } */
 
-  onCheckDetails() {
-    this.router.navigate(['project_details', this.id]);
-    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
-  }
-
-  getProjectDetails() {
+  /* getProjectDetails() {
     console.log(this.apiService.getProjectById(this.id));
     return this.apiService.getProjectById(this.id);
-  }
+  } */
 
 }

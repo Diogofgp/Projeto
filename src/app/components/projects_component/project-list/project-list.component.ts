@@ -1,9 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Project } from '../project.model';
-import { ApiService } from '../../../api-service/api-service.service';
+import { ApiService } from 'src/app/services/api-service/api-service.service';
 import { Subscription } from 'rxjs';
-import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { LoadingService } from 'src/app/services/loading';
 
 @Component({
   selector: 'app-project-list',
@@ -13,30 +13,30 @@ import { Router } from '@angular/router';
 export class ProjectListComponent implements OnInit {
 
   @Output() projectWasSelected = new EventEmitter<Project>();
+  @Input() totalProjs: number;
 
   public projectList = [];
   subscription: Subscription;
+  loading$ = this.loader.loading$;
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, public loader: LoadingService) { }
 
   ngOnInit() {
     this.subscription = this.apiService.getProjects()
       .subscribe(
         (projectList: Project[]) => {
           this.projectList = projectList;
-          /*  console.log(projectList); */
         }
       );
-
-    //this.apiService.getProjects().subscribe(api_data => this.projectList = api_data);
-    /* console.log(+ this.projects); */
   }
-  /* 
-    onProjectSelected(project_item: Project) {
-      console.log(project_item)
-      this.router.navigate(['project_details', project_item.id]);
-  
-    } */
+
+  /*  public getTotal() {
+ 
+     this.projectList.forEach(function (value) {
+       this.totalProjs++;
+     });
+     return this.totalProjs;
+   } */
 
 
 }

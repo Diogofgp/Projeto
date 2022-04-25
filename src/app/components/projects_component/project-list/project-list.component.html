@@ -47,10 +47,15 @@
     </mat-list-option>
 </mat-selection-list> -->
 
+
 <mat-nav-list>
+
+
+    <mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
 
     <app-project-item *ngFor="let pElement of projectList; let i = index" [project_item]="pElement" [index]="i">
 
     </app-project-item>
+
 
 </mat-nav-list>

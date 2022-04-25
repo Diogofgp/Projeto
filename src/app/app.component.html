@@ -6,7 +6,6 @@
 
     </button>
 
-
     <div id="header_subtitle">
         <span>{{subtitle}}</span>
     </div>
@@ -20,6 +19,7 @@
         </div>
     </a>
 </mat-toolbar>
+
 
 
 <mat-sidenav-container>
@@ -55,10 +55,9 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-
         <div class="cont">
+
             <router-outlet></router-outlet>
-            <!--    <app-project-list></app-project-list> -->
         </div>
 
 
@@ -66,6 +65,8 @@
 
 
 </mat-sidenav-container>
+
+
 
 <!-- <div class="toolbar" role="banner">
     <img id="gitlab_logo" width="50" src="../../assets/gitlab.svg" />

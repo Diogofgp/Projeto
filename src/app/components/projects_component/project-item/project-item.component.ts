@@ -1,8 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ApiService } from 'src/app/api-service/api-service.service';
+import { Component, OnInit, Input, } from '@angular/core';
 import { Project } from '../project.model';
-import { Subscription } from 'rxjs';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-item',
@@ -12,8 +10,6 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 export class ProjectItemComponent implements OnInit {
   @Input() project_item: Project;
   @Input() index: number;
-
-  /*  @Output() projectSelected = new EventEmitter(); */
 
   constructor(private router: Router) { }
 
