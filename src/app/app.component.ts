@@ -1,6 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-
-
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout'
 import { NavigationEnd, Router } from '@angular/router';
