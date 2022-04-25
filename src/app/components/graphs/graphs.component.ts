@@ -12,22 +12,40 @@ import { Project } from '../projects_component/project.model';
 })
 export class GraphsComponent implements OnInit {
 
-  //SUPPPPP
 
-  //chart vars
+
+  //Chart Colours
+
+  barColors = [
+    "#b91d47",
+    "#00aba9",
+    "#2b5797",
+    "#e8c3b9",
+    "#1e7145",
+    "#592E83",
+    "#FBC740",
+    "#66D2D6",
+    "#F51720",
+    "#0000FF",
+    "#000C66",
+    "#68BBE3",
+    "#81B622",
+    "#59981A",
+    "#DBA40E"
+  ];
+
+  //Chart Vars
   idProj: any;
   nameProj: any;
   issuesProj: any;
   starcountProj: any;
   pieChart: any = []
   barChart: any = []
+  radarChart: any = []
 
   subscription: Subscription;
   public projectList = [];
-
-  // added progress spinner
   loading$ = this.loader.loading$;
-
 
   constructor(private apiService: ApiService, public loader: LoadingService) { Chart.register(...registerables) }
 
@@ -52,12 +70,26 @@ export class GraphsComponent implements OnInit {
                 {
                   label: 'IDs',
                   data: this.issuesProj,
-                  borderWidth: 3,
-                  backgroundColor: 'rgba(93, 175, 89, 0.1)',
+                  borderWidth: 0,
+                  backgroundColor: this.barColors,
                   borderColor: '#3e95cd',
                 },
               ],
             },
+            options: {
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Project IDs',
+
+                },
+                legend: {
+                  display: true,
+                  position: 'right',
+
+                }
+              }
+            }
           });
 
           //BAR CHART
@@ -70,18 +102,143 @@ export class GraphsComponent implements OnInit {
                 {
                   label: 'StarCount',
                   data: this.starcountProj,
-                  borderWidth: 3,
-                  backgroundColor: 'rgba(93, 175, 89, 0.1)',
+                  borderWidth: 0,
+                  backgroundColor: this.barColors,
                   borderColor: '#3e95cd',
                 },
               ],
             },
+            options: {
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Project Stars',
+
+                },
+                legend: {
+                  display: false,
+                  position: 'right',
+
+                }
+              }
+            }
           });
+
+          //RADAR CHART
+
+          this.radarChart = new Chart('radarcanvas', {
+            type: 'radar',
+            data: {
+              labels: this.nameProj,
+              datasets: [
+                {
+                  label: 'StarCount',
+                  data: this.starcountProj,
+                  borderWidth: 0,
+                  backgroundColor: this.barColors,
+                  borderColor: '#3e95cd',
+                },
+              ],
+            },
+            options: {
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Project Stars',
+
+                },
+                legend: {
+                  display: false,
+                  position: 'right',
+
+                }
+              }
+            }
+          });
+
+
 
         }
       );
 
   }
+
+
+
+
+
+  /* 
+  
+  
+  
+    //chart vars
+    idProj: any;
+    nameProj: any;
+    issuesProj: any;
+    starcountProj: any;
+    pieChart: any = []
+    barChart: any = []
+  
+    subscription: Subscription;
+    public projectList = [];
+  
+    // added progress spinner
+    loading$ = this.loader.loading$;
+  
+  
+    constructor(private apiService: ApiService, public loader: LoadingService) { Chart.register(...registerables) }
+  
+    ngOnInit() {
+      this.subscription = this.apiService.getProjects()
+        .subscribe(
+          (projectList: Project[]) => {
+            this.projectList = projectList;
+            console.log(projectList);
+            this.idProj = this.projectList.map((proj: any) => proj.id)
+            this.nameProj = this.projectList.map((proj: any) => proj.name)
+            this.issuesProj = this.projectList.map((proj: any) => proj.open_issues_count)
+            this.starcountProj = this.projectList.map((proj: any) => proj.star_count)
+  
+            //PIE CHART
+  
+            this.pieChart = new Chart('piecanvas', {
+              type: 'pie',
+              data: {
+                labels: this.nameProj,
+                datasets: [
+                  {
+                    label: 'IDs',
+                    data: this.issuesProj,
+                    borderWidth: 3,
+                    backgroundColor: 'rgba(93, 175, 89, 0.1)',
+                    borderColor: '#3e95cd',
+                  },
+                ],
+              },
+            });
+  
+            //BAR CHART
+  
+            this.barChart = new Chart('barcanvas', {
+              type: 'bar',
+              data: {
+                labels: this.nameProj,
+                datasets: [
+                  {
+                    label: 'StarCount',
+                    data: this.starcountProj,
+                    borderWidth: 3,
+                    backgroundColor: 'rgba(93, 175, 89, 0.1)',
+                    borderColor: '#3e95cd',
+                  },
+                ],
+              },
+            });
+  
+          }
+        );
+  
+    } */
 
 
 
