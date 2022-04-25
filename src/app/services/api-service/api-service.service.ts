@@ -51,4 +51,25 @@ export class ApiService {
     return this.projects[index];
   }
 
+  public getIssues(index: number) {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    }
+
+    return this.http.get<any[]>(`${this.url}/projects/${index}/issues`, { headers: headers });
+  }
+
+
+  /* public getProjectsDetails(): Observable<Project> {
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    }
+
+
+    return this.http.get<Project>(`http://10.0.0.253:8181/api/v4/projects/${this.project_id}/labels`, { headers: headers });
+  } */
+
 }

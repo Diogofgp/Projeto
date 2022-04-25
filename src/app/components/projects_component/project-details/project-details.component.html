@@ -1,4 +1,40 @@
 <div>
-    kek kek
+    <br>
+    <!-- Name: {{project.id}} -->
+    <br>
+    <br>
+    Numero Total de Issues: {{totalIssues}}
+    <br>
+    <br>
+    Tempo Total Gasto (h): {{totalTimeSpent}}
+    <br>
+    <br>
+    Users:
+    <div *ngFor="let user of users">
+        {{user}}
+        <br>
+    </div>
+    <br>
 
-</div>
+
+
+    <!-- <div *ngFor="let issue of issuesList">
+
+        <br>
+        iid: {{issue.iid}}
+        <br>
+        title: {{issue.title}}
+        <br>
+        state: {{issue.state}}
+        <br>
+        Total Time Spent: {{issue.time_stats.total_time_spent}}
+        <br>
+        Human TTS: {{issue.time_stats.human_total_time_spent}}
+        <br>
+        <div *ngIf="issue.assignee">
+            Assignee: {{issue.assignee.username}}
+        </div>
+
+        <mat-divider></mat-divider>
+
+    </div> -->

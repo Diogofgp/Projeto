@@ -35,6 +35,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NetworkInterceptor } from './services/network-interceptor';
 
+
 @NgModule({
   declarations: [
     AppComponent,
