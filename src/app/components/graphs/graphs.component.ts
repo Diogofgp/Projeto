@@ -25,6 +25,7 @@ export class GraphsComponent implements OnInit {
   subscription: Subscription;
   public projectList = [];
 
+  // added progress spinner
   loading$ = this.loader.loading$;
 
 
