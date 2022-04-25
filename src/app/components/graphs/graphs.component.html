@@ -1,4 +1,6 @@
 <mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
+<!-- added progress spinner -->
+
 <div>
 
     <canvas id="piecanvas"> {{pieChart}}</canvas>
@@ -6,5 +8,7 @@
     <mat-divider></mat-divider>
     <br>
     <canvas id="barcanvas"> {{barChart}}</canvas>
+
+
 
 </div>
