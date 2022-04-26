@@ -1,10 +1,11 @@
 <div>
     <br>
-    Name: {{project.name}}
+    <h1>{{project.name}}</h1>
+</div>
+<div>
     <br>
-    <br>
+    <h2>Issue Details</h2>
     Numero Total de Issues: {{totalIssues}}
-    <br>
     <br>
     Tempo Total Gasto em Issues (h): {{totalTimeSpent}}
     <br>
@@ -16,13 +17,9 @@
     </div>
 </div>
 <br>
-<div>
-    <canvas id="labelchart" class="labelchart"> {{labelPieChart}}</canvas>
-</div>
-<br>
 <!-- 
     <div>
-        <h2>Lista de Issues:</h2>
+        <h2>Issue List:</h2>
     </div>
 
     <div *ngFor="let issue of issuesList">
@@ -45,3 +42,24 @@
         <mat-divider></mat-divider>
 
     </div> -->
+<br>
+<div>
+    <h2>Label Chart</h2>
+
+    <canvas id="labelchart" class="labelchart"> {{labelPieChart}}</canvas>
+</div>
+<br>
+<div>
+    <h2>Milestone List</h2>
+    <div *ngFor="let ms of milestonesList">
+        <br>
+        ID: {{ms.id}}
+        <br>
+        Title: {{ms.title}}
+        <br>
+        Description: {{ms.description}}
+        <br>
+        State: {{ms.state}}
+    </div>
+</div>
+<br>

@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { Issue } from '../issues.model';
 import { Label } from '../labels.model';
 import { Chart, registerables } from 'chart.js';
+import { MileStones } from '../milestones.model';
 
 @Component({
   selector: 'app-project-details',
@@ -21,6 +22,7 @@ export class ProjectDetailsComponent implements OnInit {
 
   public issuesList = [];
   public labelsList = [];
+  public milestonesList = [];
 
   public project;
 
@@ -88,6 +90,15 @@ export class ProjectDetailsComponent implements OnInit {
         (issues: Issue[]) => {
           this.issuesList = issues;
           this.getIssueInfo(this.issuesList)
+        }
+      );
+
+    this.sub = this.apiService.getMilestones(this.id)
+      .subscribe(
+        (milestones: MileStones[]) => {
+          this.milestonesList = milestones;
+          console.log("MS: ", this.milestonesList);
+          //this.getIssueInfo(this.milestonesList)
         }
       );
 
