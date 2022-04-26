@@ -63,6 +63,15 @@ export class ApiService {
     return this.http.get<any[]>(`${this.url}/projects/${index}/issues`, { headers: headers });
   }
 
+  public getLabels(index: number) {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    }
+
+    return this.http.get<any[]>(`${this.url}/projects/${index}/labels`, { headers: headers });
+  }
+
 
   /* public getProjectsDetails(): Observable<Project> {
 

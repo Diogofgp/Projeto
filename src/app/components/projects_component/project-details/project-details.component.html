@@ -1,12 +1,12 @@
 <div>
     <br>
-    <!-- Name: {{project.id}} -->
+    Name: {{project.name}}
     <br>
     <br>
     Numero Total de Issues: {{totalIssues}}
     <br>
     <br>
-    Tempo Total Gasto (h): {{totalTimeSpent}}
+    Tempo Total Gasto em Issues (h): {{totalTimeSpent}}
     <br>
     <br>
     Users:
@@ -14,14 +14,21 @@
         {{user}}
         <br>
     </div>
-    <br>
+</div>
+<br>
+<div>
+    <canvas id="labelchart" class="labelchart"> {{labelPieChart}}</canvas>
+</div>
+<br>
+<!-- 
+    <div>
+        <h2>Lista de Issues:</h2>
+    </div>
 
-
-
-    <!-- <div *ngFor="let issue of issuesList">
+    <div *ngFor="let issue of issuesList">
 
         <br>
-        iid: {{issue.iid}}
+        Issue id: {{issue.iid}}
         <br>
         title: {{issue.title}}
         <br>

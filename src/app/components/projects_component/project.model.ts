@@ -1,4 +1,3 @@
-
 export class Project {
 
     public id: number;
