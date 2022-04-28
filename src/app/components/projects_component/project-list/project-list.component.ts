@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Project } from '../project.model';
+import { Project } from '../../../models/project.model';
 import { ApiService } from 'src/app/services/api-service/api-service.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { LoadingService } from 'src/app/services/loading';
 
@@ -18,6 +18,7 @@ export class ProjectListComponent implements OnInit {
   public projectList = [];
   subscription: Subscription;
   loading$ = this.loader.loading$;
+  cards = new Observable;
 
   constructor(private apiService: ApiService, public loader: LoadingService) { }
 
@@ -28,6 +29,8 @@ export class ProjectListComponent implements OnInit {
           this.projectList = projectList;
         }
       );
+
+
   }
 
   /*  public getTotal() {

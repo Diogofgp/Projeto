@@ -2,35 +2,28 @@
             <mat-icon>info</mat-icon>
         </button> -->
 
-<mat-list-item class="altura">
 
 
-    <!--  matLine style="cursor: pointer;" 
-    [routerLink]="[index]" routerLinkActive="active" -->
-    <a>
-        Title: {{project_item.name}}
-        <br>
-        Id: {{project_item.id}}
-        <br>
-        Description: {{project_item.description}}
-        <br>
-        Issues: {{project_item.open_issues_count}}
-        <br>
-        <mat-divider></mat-divider>
-    </a>
-    <button mat-icon-button (click)="onProjectSelected()">
-        <mat-icon>info</mat-icon>
-    </button>
-
-    <!--  <a (click)="onSelected()">
+<mat-card class="dashboard-card" (click)="onProjectSelected()">
+    <mat-list-item class="altura">
 
 
-        Title: {{project_item.name}}
-        <br>
-        Description: {{project_item.description}}
-        <br>
-        Issues: {{project_item.open_issues_count}}
+        <!--  matLine style="cursor: pointer;" 
+        [routerLink]="[index]" routerLinkActive="active" -->
+        <a>
+            Title: {{project_item.name}}
+            <br>
+            Id: {{project_item.id}}
+            <br>
+            Description: {{project_item.description}}
+            <br>
+            Issues: {{project_item.open_issues_count}}
+            <br>
+            <!--  <mat-divider></mat-divider> -->
+        </a>
+        <!--  <button mat-icon-button (click)="onProjectSelected()" class="end">
+            <mat-icon>info</mat-icon>
+        </button> -->
 
-    </a> -->
-
-</mat-list-item>
+    </mat-list-item>
+</mat-card>

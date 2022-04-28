@@ -34,6 +34,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NetworkInterceptor } from './services/network-interceptor';
+import { MilestonesComponent } from './components/milestones/milestones.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { NetworkInterceptor } from './services/network-interceptor';
     GraphsComponent,
     ProjectsComponent,
     ProjectItemComponent,
+    MilestonesComponent,
   ],
   imports: [
     BrowserModule,

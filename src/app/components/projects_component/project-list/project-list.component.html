@@ -46,6 +46,21 @@
         </mat-card-subtitle>
     </mat-list-option>
 </mat-selection-list> -->
+<!-- 
+<mat-grid-list>
+    <mat-grid-tile>
+        <mat-card>
+
+            <mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
+
+            <app-project-item *ngFor="let pElement of projectList; let i = index" [project_item]="pElement" [index]="i">
+
+            </app-project-item>
+
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list> -->
+
 
 
 <mat-nav-list>

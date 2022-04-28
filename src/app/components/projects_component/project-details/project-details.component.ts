@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api-service/api-service.service';
-import { Project } from '../project.model';
+import { Project } from '../../../models/project.model';
 import { Subscription } from 'rxjs';
-import { Issue } from '../issues.model';
-import { Label } from '../labels.model';
+import { Issue } from '../../../models/issues.model';
+import { Label } from '../../../models/labels.model';
 import { Chart, registerables } from 'chart.js';
-import { MileStones } from '../milestones.model';
+import { MileStones } from '../../../models/milestones.model';
 
 @Component({
   selector: 'app-project-details',
@@ -24,7 +24,7 @@ export class ProjectDetailsComponent implements OnInit {
   public labelsList = [];
   public milestonesList = [];
 
-  public project;
+  public project = <any>[];
 
   totalIssues = 0;
   totalTimeSpent = 0;
@@ -97,7 +97,7 @@ export class ProjectDetailsComponent implements OnInit {
       .subscribe(
         (milestones: MileStones[]) => {
           this.milestonesList = milestones;
-          console.log("MS: ", this.milestonesList);
+          /*  console.log("MS: ", this.milestonesList); */
           //this.getIssueInfo(this.milestonesList)
         }
       );

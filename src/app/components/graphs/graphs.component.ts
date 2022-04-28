@@ -3,7 +3,7 @@ import { Chart, registerables } from 'chart.js';
 import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/services/api-service/api-service.service';
 import { LoadingService } from 'src/app/services/loading';
-import { Project } from '../projects_component/project.model';
+import { Project } from '../../models/project.model';
 
 @Component({
   selector: 'app-graphs',

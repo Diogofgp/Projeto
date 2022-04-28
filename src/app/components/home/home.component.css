@@ -1,26 +1,16 @@
-.example-card {
-    max-width: 400px;
+/* .example-card {
+    max-width: 200px;
 }
 
 .example-card2 {
-    max-width: 700px;
-}
-
-.example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-    max-height: 200px;
-}
-
-.grid-container {
-    margin: 20px;
-}
+    max-width: 400px;
+} */
 
 .dashboard-card {
     position: absolute;
-    top: 15px;
-    left: 15px;
-    right: 15px;
+    top: 20px;
+    left: 20px;
+    right: 20px;
     bottom: 15px;
 }
 
@@ -30,9 +20,39 @@
     right: 10px;
 }
 
-.dashboard-card-content {
-    text-align: center;
+.content {
+    /* height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+
+    /*  background-color: bisque; */
+    /* width: 60%; */
+    /* display: flex;
+    justify-content: space-around; */
+    /* margin-top: 15%;
+    margin-left: 15%; */
+    /* top: 50%;
+    left: 50%;
+    position: absolute; */
+
+
+    /*  margin-top: 10%;
+    display: flex;
+    justify-content: space-evenly; */
+    /*  background-color: bisque; */
+
+
+
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    /*     justify-content: space-around;
+    display: flex; */
 }
+
 
 mat-progress-spinner {
     position: absolute;

@@ -5,23 +5,16 @@
     opacity: 0.8;
 }
 
-#header_subtitle {
-    padding-right: 15px;
+.header_subtitle {
+    margin-right: 15px;
+    margin-left: 15px;
+    cursor: pointer;
 }
 
-/* .toolbar {
-    height: 60px;
-    position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    background-color: #813fc3;
-    color: white;
-    font-weight: 600;
-  } */
-
+.header.subtitle:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
 
 .toolbar #atlanse_logo {
     height: 40px;
@@ -49,15 +42,15 @@
 
 .cont {
     /*   background-color: antiquewhite; */
-    height: calc(100vh - 102px);
+    height: calc(100vh - 97px);
     margin: 16px;
     margin-left: 30px;
-    /* display: ce; */
-    justify-content: center;
-    align-items: center;
+
+    /* justify-content: center;
+    align-items: center; */
     /* font-size: 2rem;
     color: lightgray; */
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 mat-toolbar {
@@ -88,8 +81,12 @@ mat-divider {
 }
 
 mat-icon {
-    margin-right: 20px;
+    /* margin-right: 20px; */
     color: white;
+}
+
+.menuItem {
+    margin-left: 40px;
 }
 
 .menu-button {

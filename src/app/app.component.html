@@ -1,18 +1,20 @@
 <mat-toolbar class="mat-elevation-z8">
 
     <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
-        <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+        <mat-icon *ngIf="sidenav.opened"> keyboard_backspace </mat-icon>
         <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
 
     </button>
 
-    <div id="header_subtitle">
+
+    <div class="header_subtitle" routerLink="/home">
         <span>{{subtitle}}</span>
     </div>
 
     <img id="gitlab_logo" width="40" src="../../assets/gitlab.svg" />
 
     <div class="spacer"></div>
+
     <a href="https://www.atlanse.pt/en" title="Atlanse" id="atlanse_logo">
         <div>
             <img src="../../assets/logo.svg" />
@@ -31,22 +33,22 @@
 
         <button mat-button class="menu-button" routerLink="/home">
             <mat-icon>home</mat-icon>
-            <span>Home</span>
+            <span class="menuItem">Home</span>
         </button>
 
         <button mat-button class="menu-button" routerLink="/projects">
             <mat-icon>work_outline</mat-icon>
-            <span>Projects</span>
+            <span class="menuItem">Projects</span>
         </button>
 
         <button mat-button class="menu-button" routerLink="/users">
             <mat-icon>person</mat-icon>
-            <span>Users</span>
+            <span class="menuItem">Users</span>
         </button>
 
         <button mat-button class="menu-button" routerLink="/graphs">
             <mat-icon>bar_chart</mat-icon>
-            <span>Graphs</span>
+            <span class="menuItem">Graphs</span>
         </button>
 
         <mat-divider></mat-divider>
@@ -56,7 +58,6 @@
 
     <mat-sidenav-content>
         <div class="cont">
-
             <router-outlet></router-outlet>
         </div>
 
