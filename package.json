@@ -29,6 +29,7 @@
     "@ngneat/until-destroy": "^9.0.2",
     "@popperjs/core": "^2.10.2",
     "@swimlane/ngx-charts": "^20.1.0",
+    "angular-i18n": "^1.8.3",
     "bootstrap": "^3.4.1",
     "chart.js": "^3.7.1",
     "rxjs": "~7.5.0",

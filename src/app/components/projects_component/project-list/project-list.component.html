@@ -81,8 +81,9 @@
 <div>
     <div fxLayout="row wrap" fxLayoutGap="16px grid" style="padding: 3%;">
 
-        <app-project-item [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="80%" fxFlex.sm="50%" fxFlex.md="50%"
-            fxFlex.lg="50%" *ngFor="let pElement of projectList; let i = index" [project_item]="pElement" [index]="i">
+        <app-project-item [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" fxFlex.md="33%"
+            fxFlex.lg="33%" fxFlex.xl="20%" *ngFor="let pElement of projectList; let i = index"
+            [project_item]="pElement" [index]="i">
 
         </app-project-item>
 
