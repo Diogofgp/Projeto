@@ -20,6 +20,8 @@ export class ProjectDetailsComponent implements OnInit {
 
   sub: Subscription;
 
+  pagenumber: number;
+
   public issuesList = [];
   public labelsList = [];
   public milestonesList = [];
@@ -30,6 +32,7 @@ export class ProjectDetailsComponent implements OnInit {
   totalTimeSpent = 0;
   users = [];
   labelnames = [];
+  macros = [];
 
   mapValues: Map<string, number> = new Map();
 
@@ -89,7 +92,9 @@ export class ProjectDetailsComponent implements OnInit {
       .subscribe(
         (issues: Issue[]) => {
           this.issuesList = issues;
-          this.getIssueInfo(this.issuesList)
+          //console.log("ISSUES: ", this.issuesList);
+          this.getIssueInfo(this.issuesList);
+          this.getMacros(this.issuesList);
         }
       );
 
@@ -97,8 +102,7 @@ export class ProjectDetailsComponent implements OnInit {
       .subscribe(
         (milestones: MileStones[]) => {
           this.milestonesList = milestones;
-          /*  console.log("MS: ", this.milestonesList); */
-          //this.getIssueInfo(this.milestonesList)
+          console.log("MS: ", this.milestonesList);
         }
       );
 
@@ -118,9 +122,13 @@ export class ProjectDetailsComponent implements OnInit {
     for (let i = 0; i < issues.length; i++) {
       this.totalTimeSpent = this.totalTimeSpent + issues[i].time_stats.total_time_spent;
       if (issues[i].assignee || issues[i].assignee != null) {
-        this.users.push(issues[i].assignee.username);
+
+        if (this.users.indexOf(issues[i].assignee.username)) {
+          this.users.push(issues[i].assignee.username);
+        }
       }
       //console.log(issues[i].labels[0]);
+
     }
 
     this.totalTimeSpent = this.totalTimeSpent / 3600;
@@ -131,8 +139,13 @@ export class ProjectDetailsComponent implements OnInit {
       let count = 0;
 
       for (let i = 0; i < issues.length; i++) {
-        if (this.labelnames[j] == issues[i].labels[0]) {
-          count++;
+
+        //console.log("QUANTIDADE: ", issues[i].labels.length);
+
+        for (let n = 0; n < issues[i].labels.length; n++) {
+          if (this.labelnames[j] == issues[i].labels[n]) {
+            count++;
+          }
         }
       }
       //console.log("COUNT ", this.labelnames[j], " : ", count);
@@ -188,6 +201,24 @@ export class ProjectDetailsComponent implements OnInit {
       }
     });
 
+  }
+
+  async getMacros(issues) {
+
+    for (let i = 0; i < issues.length; i++) {
+
+      for (let n = 0; n < issues[i].labels.length; n++) {
+        if (issues[i].labels[n] == "Macro ♠") {
+          this.macros.push(issues[i])
+        }
+      }
+    }
+    //console.log("MACROS: ", this.macros);
+
+  }
+
+  myMilestone() {
+    console.log("TESTE ENTROU");
   }
 
   onCheckDetails() {
