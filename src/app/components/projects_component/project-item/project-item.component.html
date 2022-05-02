@@ -4,26 +4,47 @@
 
 
 
-<mat-card class="dashboard-card" (click)="onProjectSelected()">
-    <mat-list-item class="altura">
+<mat-card>
 
+    <mat-card-title-group>
 
-        <!--  matLine style="cursor: pointer;" 
-        [routerLink]="[index]" routerLinkActive="active" -->
-        <a>
-            Title: {{project_item.name}}
+        <mat-card-title>Title: {{project_item.name}}</mat-card-title>
+
+        <mat-card-subtitle>
             <br>
             Id: {{project_item.id}}
             <br>
-            Description: {{project_item.description}}
-            <br>
             Issues: {{project_item.open_issues_count}}
+
+        </mat-card-subtitle>
+
+    </mat-card-title-group>
+    <mat-card-content>
+        <div *ngIf="project_item.description">
+            {{project_item.description}}
+        </div>
+
+    </mat-card-content>
+    <!--   <mat-card-content>
+            
             <br>
-            <!--  <mat-divider></mat-divider> -->
-        </a>
-        <!--  <button mat-icon-button (click)="onProjectSelected()" class="end">
+            
+            <br>
+            
+            <mat-card-footer>
+                kek
+            </mat-card-footer>
+
+        </mat-card-content> -->
+
+    <mat-card-actions>
+        <button mat-button (click)="onProjectSelected()">SEE MORE</button>
+    </mat-card-actions>
+    <!--  <mat-divider></mat-divider> -->
+
+    <!--  <button mat-icon-button (click)="onProjectSelected()" class="end">
             <mat-icon>info</mat-icon>
         </button> -->
 
-    </mat-list-item>
+
 </mat-card>
