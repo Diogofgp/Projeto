@@ -35,6 +35,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NetworkInterceptor } from './services/network-interceptor';
 import { MilestonesComponent } from './components/milestones/milestones.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { MilestonesComponent } from './components/milestones/milestones.componen
     AppRoutingModule,
     MatMenuModule,
     LayoutModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    FlexLayoutModule
 
   ],
   providers: [{
