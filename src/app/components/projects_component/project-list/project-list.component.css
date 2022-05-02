@@ -5,3 +5,8 @@ mat-progress-spinner {
     transform: translate(-50%, -50%);
     z-index: 5;
 }
+
+.content {
+    padding-left: 1%;
+    padding-right: 1%;
+}

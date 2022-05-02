@@ -67,8 +67,17 @@
 
 </mat-grid-list> -->
 
+
+
+
+
+
 <div class="grid-container">
-    <h1 class="mat-h1">Dashboard</h1>
+    <mat-card-title>
+        Dashboard
+        <!-- <h1 class="mat-h1" >Dashboard</h1> -->
+    </mat-card-title>
+
     <mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
     <mat-grid-list cols="2" rowHeight="350px">
         <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">

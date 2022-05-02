@@ -19,9 +19,19 @@ export class AppComponent {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   loading$ = this.loader.loading$;
+  /* 
+    siteLanguage: string = 'English';
+    siteLocale: string;
+    languageList = [
+      { code: 'en', label: 'English' },
+      { code: 'pt', label: 'Portugues' },
+    ]; */
 
 
-  constructor(private observer: BreakpointObserver, private router: Router, public loader: LoadingService) { }
+  constructor(private observer: BreakpointObserver, private router: Router, public loader: LoadingService) {
+    /*     this.siteLocale = window.location.pathname.split('/')[1];
+        this.siteLanguage = this.languageList.find(f => f.code === this.siteLocale).label; */
+  }
 
   ngAfterViewInit() {
     this.observer

@@ -63,7 +63,7 @@
 
 
 
-<mat-nav-list>
+<!-- <mat-nav-list>
 
 
     <mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
@@ -73,4 +73,32 @@
     </app-project-item>
 
 
-</mat-nav-list>
+</mat-nav-list> -->
+
+
+<mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
+
+<div>
+    <div fxLayout="row wrap" fxLayoutGap="16px grid" style="padding: 3%;">
+
+        <app-project-item [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%"
+            fxFlex.lg="33%" fxFlex.xl="20%" *ngFor="let pElement of projectList; let i = index"
+            [project_item]="pElement" [index]="i">
+
+        </app-project-item>
+
+        <!-- <mat-card class="mat-elevation-z4" style="width: 90%; align-content: center; align-items: center;">
+                <mat-card-header>
+                    <mat-card-title>{{user.name}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image style="padding-left: 5%; padding-right: 5%; padding-top: 5%;"
+                    src="{{user.avatar_url}}">
+                <mat-card-content>
+                    <p>
+                        {{user.username}}
+                    </p>
+                </mat-card-content>
+            </mat-card> -->
+
+    </div>
+</div>

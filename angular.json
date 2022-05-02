@@ -6,6 +6,15 @@
     "Projeto": {
       "projectType": "application",
       "schematics": {},
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "pt": {
+            "translation": "src/locale/messages.pt.xlf",
+            "baseHref": ""
+          }
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -58,6 +67,11 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "pt": {
+              "localize": [
+                "pt"
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -70,6 +84,9 @@
             },
             "development": {
               "browserTarget": "Projeto:build:development"
+            },
+            "pt": {
+              "browserTarget": "Projeto:build:pt"
             }
           },
           "defaultConfiguration": "development"
