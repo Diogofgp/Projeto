@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Issue } from 'src/app/models/issues.model';
 import { Project } from 'src/app/models/project.model';
 
 @Injectable({
@@ -20,7 +21,7 @@ export class ApiService {
       'Authorization': `Bearer ${this.auth_token}`
     }
 
-    return this.http.get<Project[]>(`${this.url}/projects`, { headers: headers });
+    return this.http.get<Project[]>(`${this.url}/projects?per_page=1000`, { headers: headers });
   }
 
   public getProjectById(index: number) {
@@ -39,7 +40,7 @@ export class ApiService {
       'Authorization': `Bearer ${this.auth_token}`
     }
 
-    return this.http.get<any[]>(`${this.url}/users`, { headers: headers });
+    return this.http.get<any[]>(`${this.url}/users?per_page=1000`, { headers: headers });
   }
 
   setProjects(projects: Project[]) {
@@ -57,8 +58,11 @@ export class ApiService {
       'Authorization': `Bearer ${this.auth_token}`
     }
 
-    return this.http.get<any[]>(`${this.url}/projects/${index}/issues`, { headers: headers });
+    const response = this.http.get<any[]>(`${this.url}/projects/${index}/issues?per_page=1000`, { headers: headers });
+    //console.log("TESTE: ", response);
+    return response;
   }
+
 
   public getLabels(index: number) {
     const headers = {
@@ -66,7 +70,7 @@ export class ApiService {
       'Authorization': `Bearer ${this.auth_token}`
     }
 
-    return this.http.get<any[]>(`${this.url}/projects/${index}/labels`, { headers: headers });
+    return this.http.get<any[]>(`${this.url}/projects/${index}/labels?per_page=1000`, { headers: headers });
   }
 
   public getMilestones(index: number) {
@@ -75,7 +79,17 @@ export class ApiService {
       'Authorization': `Bearer ${this.auth_token}`
     }
 
-    return this.http.get<any[]>(`${this.url}/projects/${index}/milestones`, { headers: headers });
+    return this.http.get<any[]>(`${this.url}/projects/${index}/milestones?per_page=1000`, { headers: headers });
+  }
+
+  public getMacroLinks(index: number, iid: number) {
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    }
+
+    return this.http.get<Issue[]>(`${this.url}/projects/${index}/issues/${iid}/links`, { headers: headers });
   }
 
 

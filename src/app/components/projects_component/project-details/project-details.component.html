@@ -17,39 +17,62 @@
     </div>
 </div>
 <br>
-<!-- 
-    <div>
-        <h2>Issue List:</h2>
-    </div>
-
-    <div *ngFor="let issue of issuesList">
-
-        <br>
-        Issue id: {{issue.iid}}
-        <br>
-        title: {{issue.title}}
-        <br>
-        state: {{issue.state}}
-        <br>
-        Total Time Spent: {{issue.time_stats.total_time_spent}}
-        <br>
-        Human TTS: {{issue.time_stats.human_total_time_spent}}
-        <br>
-        <div *ngIf="issue.assignee">
-            Assignee: {{issue.assignee.username}}
-        </div>
-
-        <mat-divider></mat-divider>
-
-    </div> -->
-<br>
 <div>
     <h2>Label Chart</h2>
 
     <canvas id="labelchart" class="labelchart"> {{labelPieChart}}</canvas>
 </div>
 <br>
+
 <div>
+    <h2>Macro Issues</h2>
+    <div *ngFor="let macro of macros">
+        <br>
+        Issue id: {{macro.iid}}
+        <br>
+        title: {{macro.title}}
+        <br>
+        state: {{macro.state}}
+        <br>
+        Time Estimate: {{macro.time_stats.time_estimate}}
+        <br>
+        Total Time Spent: {{macro.time_stats.total_time_spent}}
+        <br>
+        Human Time Estimate: {{macro.time_stats.human_time_estimate}}
+        <br>
+        Human Total Time Spent: {{macro.time_stats.human_total_time_spent}}
+        <br>
+        <div *ngIf="macro.assignee">
+            Assignee: {{macro.assignee.username}}
+        </div>
+        <br>
+        <div *ngIf="macro.milestone">
+            Milestone: {{macro.milestone.title}}
+            <br>
+        </div>
+        <div *ngIf="macro.labels">
+            Labels:
+            <div *ngFor="let label of macro.labels">
+                {{label}}
+                <br>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+</div>
+<br>
+<!-- <div>
+    <select>
+        
+        <option *ngFor="let milestone of milestonesList" value="{{milestone.iid}}">{{milestone.title}}</option>
+    </select>
+    <br><br>
+    <input type="button" value="Submit" onclick="myMilestone()">
+    <br><br>
+</div>
+<br> -->
+
+<!-- <div>
     <h2>Milestone List</h2>
     <div *ngFor="let ms of milestonesList">
         <br>
@@ -62,4 +85,45 @@
         State: {{ms.state}}
     </div>
 </div>
-<br>
+<br> -->
+
+<!-- <div>
+    <h2>Issue List:</h2>
+</div>
+
+<div *ngFor="let issue of issuesList">
+
+    <br>
+    Issue id: {{issue.iid}}
+    <br>
+    title: {{issue.title}}
+    <br>
+    state: {{issue.state}}
+    <br>
+    Time Estimate: {{issue.time_stats.time_estimate}}
+    <br>
+    Total Time Spent: {{issue.time_stats.total_time_spent}}
+    <br>
+    Human Time Estimate: {{issue.time_stats.human_time_estimate}}
+    <br>
+    Human Total Time Spent: {{issue.time_stats.human_total_time_spent}}
+    <br>
+    <div *ngIf="issue.assignee">
+        Assignee: {{issue.assignee.username}}
+    </div>
+    <br>
+    <div *ngIf="issue.milestone">
+        Milestone: {{issue.milestone.title}}
+        <br>
+    </div>
+    <div *ngIf="issue.labels">
+        Labels:
+        <div *ngFor="let label of issue.labels">
+            {{label}}
+            <br>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+
+</div>
+<br> -->
