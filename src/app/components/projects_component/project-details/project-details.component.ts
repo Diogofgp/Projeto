@@ -17,19 +17,20 @@ export class ProjectDetailsComponent implements OnInit {
 
   id: number;
   projectId: Project;
-
   sub: Subscription;
 
-  public issuesList = [];
+  public issuesList = <any>[];
   public labelsList = [];
   public milestonesList = [];
-
   public project = <any>[];
 
-  totalIssues = 0;
-  totalTimeSpent = 0;
+  totalIssues: number = 0;
+  totalTimeSpent: number = 0;
   users = [];
   labelnames = [];
+  totalIssuesOpened: number = 0;
+  totalIssuesClosed: number = 0;
+
 
   mapValues: Map<string, number> = new Map();
 
@@ -89,7 +90,9 @@ export class ProjectDetailsComponent implements OnInit {
       .subscribe(
         (issues: Issue[]) => {
           this.issuesList = issues;
-          this.getIssueInfo(this.issuesList)
+          this.getIssueInfo(this.issuesList);
+          this.getTotalIssuesOpened();
+          this.getTotalIssuesClosed();
         }
       );
 
@@ -114,6 +117,7 @@ export class ProjectDetailsComponent implements OnInit {
 
   async getIssueInfo(issues) {
     this.totalIssues = issues.length;
+
 
     for (let i = 0; i < issues.length; i++) {
       this.totalTimeSpent = this.totalTimeSpent + issues[i].time_stats.total_time_spent;
@@ -195,9 +199,22 @@ export class ProjectDetailsComponent implements OnInit {
     // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
 
-  getProjectDetails() {
-    //console.log(this.apiService.getProjectById(this.id));
-    return this.apiService.getProjectById(this.id);
+  getTotalIssuesOpened() {
+
+    this.issuesList.forEach(issue => {
+      if (issue.state == "opened")
+        this.totalIssuesOpened++;
+    });
+    return this.totalIssuesOpened;
+  }
+
+  getTotalIssuesClosed() {
+
+    this.issuesList.forEach(issue => {
+      if (issue.state == "closed")
+        this.totalIssuesClosed++;
+    });
+    return this.totalIssuesClosed;
   }
 
 }
