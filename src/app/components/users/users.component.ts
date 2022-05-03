@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/services/api-service/api-service.service';
 import { LoadingService } from 'src/app/services/loading';
-import { User } from './users.model';
+import { User } from '../../models/users.model';
 
 @Component({
   selector: 'app-users',

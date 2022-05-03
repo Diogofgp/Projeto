@@ -1,0 +1,66 @@
+<mat-card>
+    <br>
+    <h2>Issue Details</h2>
+    Numero Total de Issues: {{totalIssues}}
+    <br>
+    Tempo Total Gasto em Issues (h): {{totalTimeSpent}}
+    <br>
+    total issues opened: {{totalIssuesOpened}}
+    <br>
+    total issues closed: {{totalIssuesClosed}}
+    <br>
+    Users:
+    <div *ngFor="let user of users">
+        {{user}}
+        <br>
+    </div>
+</mat-card>
+
+
+<br>
+<mat-card>
+    <h2>Label Chart</h2>
+
+    <canvas id="labelchart" class="labelchart"> {{labelPieChart}}</canvas>
+</mat-card>
+
+<br>
+
+<mat-card>
+    <h2>Macro Issues</h2>
+    <div *ngFor="let macro of macros">
+        <br>
+        Issue id: {{macro.iid}}
+        <br>
+        title: {{macro.title}}
+        <br>
+        state: {{macro.state}}
+        <br>
+        Time Estimate: {{macro.time_stats.time_estimate}}
+        <br>
+        Total Time Spent: {{macro.time_stats.total_time_spent}}
+        <br>
+        Human Time Estimate: {{macro.time_stats.human_time_estimate}}
+        <br>
+        Human Total Time Spent: {{macro.time_stats.human_total_time_spent}}
+        <br>
+        <div *ngIf="macro.assignee">
+            Assignee: {{macro.assignee.username}}
+        </div>
+        <br>
+        <div *ngIf="macro.milestone">
+            Milestone: {{macro.milestone.title}}
+            <br>
+        </div>
+        <div *ngIf="macro.labels">
+            Labels:
+            <div *ngFor="let label of macro.labels">
+                {{label}}
+                <br>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+</mat-card>
+
+<br>

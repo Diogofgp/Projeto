@@ -5,7 +5,7 @@ import { Project } from '../../models/project.model';
 import { ApiService } from 'src/app/services/api-service/api-service.service';
 import { Observable, of, Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading';
-import { User } from '../users/users.model';
+import { User } from '../../models/users.model';
 
 @Component({
   selector: 'app-home',

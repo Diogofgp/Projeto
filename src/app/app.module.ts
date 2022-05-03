@@ -36,6 +36,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NetworkInterceptor } from './services/network-interceptor';
 import { MilestonesComponent } from './components/milestones/milestones.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { IssuesComponent } from './components/issues/issues.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ProjectsComponent,
     ProjectItemComponent,
     MilestonesComponent,
+    IssuesComponent,
   ],
   imports: [
     BrowserModule,
