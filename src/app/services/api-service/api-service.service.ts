@@ -47,7 +47,6 @@ export class ApiService {
     this.projects = projects;
   }
 
-
   getProjectId(index: number) {
     return this.projects[index];
   }
@@ -91,7 +90,6 @@ export class ApiService {
 
     return this.http.get<Issue[]>(`${this.url}/projects/${index}/issues/${iid}/links`, { headers: headers });
   }
-
 
   /* public getProjectsDetails(): Observable<Project> {
 
