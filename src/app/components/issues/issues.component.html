@@ -1,15 +1,14 @@
 <mat-card>
-    <br>
     <h2>Issue Details</h2>
     Numero Total de Issues: {{totalIssues}}
     <br>
+    Total issues abertos: {{totalIssuesOpened}}
+    <br>
+    Total issues fechados: {{totalIssuesClosed}}
+    <br>
     Tempo Total Gasto em Issues (h): {{totalTimeSpent}}
     <br>
-    total issues opened: {{totalIssuesOpened}}
-    <br>
-    total issues closed: {{totalIssuesClosed}}
-    <br>
-    Users:
+    Participantes:
     <div *ngFor="let user of users">
         {{user}}
         <br>
@@ -19,23 +18,38 @@
 
 <br>
 <mat-card>
-    <h2>Label Chart</h2>
+    <h2>Number of issues by label</h2>
 
     <canvas id="labelchart" class="labelchart"> {{labelPieChart}}</canvas>
 </mat-card>
-
 <br>
 
-<mat-card>
-    <h2>Macro Issues</h2>
-    <div *ngFor="let macro of macros">
-        <br>
-        Issue id: {{macro.iid}}
-        <br>
-        title: {{macro.title}}
-        <br>
-        state: {{macro.state}}
-        <br>
+<mat-card *ngFor="let macro of macros">
+
+    <mat-card-title-group>
+
+        <mat-card-title>
+            {{macro.title}}
+        </mat-card-title>
+
+
+        <mat-card-subtitle>
+            <br>
+            Issue id:{{macro.iid}}
+            <br>
+            issue state: {{macro.state}}
+        </mat-card-subtitle>
+    </mat-card-title-group>
+
+    <br>
+
+
+
+    <mat-card-content>
+
+
+        ---TIME STATS---
+        <br><br>
         Time Estimate: {{macro.time_stats.time_estimate}}
         <br>
         Total Time Spent: {{macro.time_stats.total_time_spent}}
@@ -49,18 +63,23 @@
         </div>
         <br>
         <div *ngIf="macro.milestone">
-            Milestone: {{macro.milestone.title}}
+            <h3>Milestone: {{macro.milestone.title}}</h3>
+
             <br>
         </div>
-        <div *ngIf="macro.labels">
-            Labels:
-            <div *ngFor="let label of macro.labels">
-                {{label}}
-                <br>
-            </div>
-        </div>
-        <mat-divider></mat-divider>
-    </div>
+        <!-- <div *ngIf="macro.labels">
+                Labels:
+                <div *ngFor="let label of macro.labels">
+                    {{label}}
+                    <br>
+                </div>
+            </div> -->
+
+
+    </mat-card-content>
+
+
+
 </mat-card>
 
 <br>
