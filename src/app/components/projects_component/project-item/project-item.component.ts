@@ -16,7 +16,7 @@ export class ProjectItemComponent implements OnInit {
   ngOnInit() { }
 
   onProjectSelected() {
-    this.router.navigate([this.project_item.id, 'project_details',]);
+    this.router.navigate([this.project_item.id, 'project_details']);
     // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
 

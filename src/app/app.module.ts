@@ -37,6 +37,9 @@ import { NetworkInterceptor } from './services/network-interceptor';
 import { MilestonesComponent } from './components/milestones/milestones.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { IssuesComponent } from './components/issues/issues.component';
+import { IssuesListComponent } from './components/issues/issues-list/issues-list.component';
+import { IssueItemComponent } from './components/issues/issue-item/issue-item.component';
+import { IssueDetailsComponent } from './components/issues/issue-details/issue-details.component';
 
 
 @NgModule({
@@ -51,6 +54,9 @@ import { IssuesComponent } from './components/issues/issues.component';
     ProjectItemComponent,
     MilestonesComponent,
     IssuesComponent,
+    IssuesListComponent,
+    IssueItemComponent,
+    IssueDetailsComponent,
   ],
   imports: [
     BrowserModule,

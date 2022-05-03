@@ -1,0 +1,41 @@
+<!-- <mat-card>
+    <h2>Issue Details</h2>
+    Numero Total de Issues: {{totalIssues}}
+    <br>
+    Total issues abertos: {{totalIssuesOpened}}
+    <br>
+    Total issues fechados: {{totalIssuesClosed}}
+    <br>
+    Tempo Total Gasto em Issues (h): {{totalTimeSpent}}
+    <br>
+    Participantes:
+    <div *ngFor="let user of users">
+        {{user}}
+        <br>
+    </div>
+
+    
+</mat-card>  -->
+
+<mat-card>
+
+    <mat-card-title-group>
+
+        <mat-card-title>Title: {{issue_item.title}}</mat-card-title>
+
+        <mat-card-subtitle>
+            <br>
+            Id: {{issue_item.iid}}
+            <br>
+            issue state: {{issue_item.state}}
+            <br>
+            issue state: {{issue_item.assignee}}
+        </mat-card-subtitle>
+    </mat-card-title-group>
+
+
+
+    <mat-card-actions>
+        <button mat-button (click)="onIssueSelected()">See More</button>
+    </mat-card-actions>
+</mat-card>
