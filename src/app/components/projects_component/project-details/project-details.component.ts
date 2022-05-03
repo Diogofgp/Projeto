@@ -33,8 +33,11 @@ export class ProjectDetailsComponent implements OnInit {
   users = [];
   labelnames = [];
   macros = [];
+  teste = [];
 
   mapValues: Map<string, number> = new Map();
+  mapMacroTime: Map<string, number> = new Map();
+  mapIdsForMacros: Map<number, number> = new Map();
 
   labelPieChart: any = [];
 
@@ -102,7 +105,7 @@ export class ProjectDetailsComponent implements OnInit {
       .subscribe(
         (milestones: MileStones[]) => {
           this.milestonesList = milestones;
-          console.log("MS: ", this.milestonesList);
+          //console.log("MS: ", this.milestonesList);
         }
       );
 
@@ -214,12 +217,50 @@ export class ProjectDetailsComponent implements OnInit {
       }
     }
     //console.log("MACROS: ", this.macros);
+    this.getMacroLinks(this.macros);
+    this.getMacroTimeSum()
+  }
+
+  getMacroLinks(macroprojects) {
+
+    macroprojects.forEach(element => {
+
+      let id = element.iid;
+
+      this.sub = this.apiService.getMacroLinks(this.id, element.iid)
+        .subscribe(
+          (proj: Issue[]) => {
+            //console.log("Links: ", proj);
+
+            //this.teste = proj;
+            proj.forEach(element => {
+
+              this.mapIdsForMacros.set(element.iid, id);
+            });
+          }
+        );
+
+    });
+    //console.log("TESTE: ", this.teste);
+    //console.log("MAP: ", this.mapIdsForMacros);
+  }
+
+  getMacroTimeSum() {
+
+    this.mapMacroTime
+    //console.log("TESTE: ", this.teste);
+    //console.log("Issues: ", this.issuesList);
+
+
+    /* let values = Array.from(this.mapIdsForMacros.values());
+    let keys = [...this.mapIdsForMacros.keys()];
+
+
+    console.log("Keys: ", keys);
+    console.log("Values: ", values); */
 
   }
 
-  myMilestone() {
-    console.log("TESTE ENTROU");
-  }
 
   onCheckDetails() {
     this.router.navigate(['project_details', this.id]);

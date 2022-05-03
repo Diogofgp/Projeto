@@ -82,6 +82,16 @@ export class ApiService {
     return this.http.get<any[]>(`${this.url}/projects/${index}/milestones?per_page=1000`, { headers: headers });
   }
 
+  public getMacroLinks(index: number, iid: number) {
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    }
+
+    return this.http.get<Issue[]>(`${this.url}/projects/${index}/issues/${iid}/links`, { headers: headers });
+  }
+
 
   /* public getProjectsDetails(): Observable<Project> {
 

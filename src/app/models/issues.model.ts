@@ -8,6 +8,14 @@ export class Issue {
     public labels: [];
     public milestone: [];
 
+    /* public time_stats = {
+        time_estimate: number,
+        total_time_spent: number,
+        human_time_estimate: string,
+        human_total_time_spent: string,
+
+    }; */
+
     constructor(iid: number, title: string, state: string, time_stats: [], assignee: [], labels: [], milestone: []) {
         this.iid = iid;
         this.title = title;
