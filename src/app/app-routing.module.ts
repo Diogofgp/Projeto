@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GraphsComponent } from './components/graphs/graphs.component';
 import { HomeComponent } from './components/home/home.component';
+import { IssueDetailsComponent } from './components/issues/issue-details/issue-details.component';
 import { IssuesComponent } from './components/issues/issues.component';
 import { ProjectDetailsComponent } from './components/projects_component/project-details/project-details.component';
 import { ProjectsComponent } from './components/projects_component/projects.component';
@@ -31,7 +32,8 @@ const routes: Routes = [
   },
 
   { path: ':id/project_details', component: ProjectDetailsComponent },
-  { path: ':id/project_details/issues', component: IssuesComponent },
+  { path: ':issue_id/issue_details', component: IssueDetailsComponent },
+
   /*   { path: ':id/project_details', component: ProjectDetailsComponent }, */
   /* {
     path: '**',

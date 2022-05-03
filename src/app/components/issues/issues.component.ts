@@ -17,6 +17,15 @@ import { ApiService } from 'src/app/services/api-service/api-service.service';
 })
 export class IssuesComponent implements OnInit {
 
+
+  /* UNICO QUE INTERESSA */
+  selectedIssue: Issue;
+  /* UNICO QUE INTERESSA */
+
+
+  /* REMOVER */
+
+
   id: number;
   projectId: Project;
   sub: Subscription;
@@ -76,7 +85,7 @@ export class IssuesComponent implements OnInit {
         }
       );
 
-    this.sub = this.apiService.getIssues(this.id)
+    this.sub = this.apiService.getIssuesByProjectId(this.id)
       .subscribe(
         (issues: Issue[]) => {
           this.issuesList = issues;

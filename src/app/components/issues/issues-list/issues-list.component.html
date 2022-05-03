@@ -1,0 +1,4 @@
+<mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
+
+<app-issue-item *ngFor="let pElement of issuesList; let i = index" [issue_item]="pElement" [index]="i">
+</app-issue-item>

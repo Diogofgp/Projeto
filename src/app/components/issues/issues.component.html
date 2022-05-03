@@ -1,4 +1,8 @@
-<mat-card>
+<app-issues-list (issueWasSelected)="selectedIssue = $event"></app-issues-list>
+
+
+
+<!-- <mat-card>
     <h2>Issue Details</h2>
     Numero Total de Issues: {{totalIssues}}
     <br>
@@ -67,13 +71,6 @@
 
             <br>
         </div>
-        <!-- <div *ngIf="macro.labels">
-                Labels:
-                <div *ngFor="let label of macro.labels">
-                    {{label}}
-                    <br>
-                </div>
-            </div> -->
 
 
     </mat-card-content>
@@ -82,4 +79,4 @@
 
 </mat-card>
 
-<br>
+<br> -->

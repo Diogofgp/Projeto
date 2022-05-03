@@ -51,7 +51,7 @@ export class ApiService {
     return this.projects[index];
   }
 
-  public getIssues(index: number) {
+  public getIssuesByProjectId(index: number) {
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.auth_token}`
