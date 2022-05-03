@@ -190,6 +190,7 @@ export class IssuesComponent implements OnInit {
             position: 'left',
 
           }
+
         }
       }
     });
