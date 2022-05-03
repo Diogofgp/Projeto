@@ -2,8 +2,6 @@
             <mat-icon>info</mat-icon>
         </button> -->
 
-
-
 <mat-card>
 
     <mat-card-title-group>
@@ -15,25 +13,18 @@
             Id: {{project_item.id}}
             <br>
             Issues: {{project_item.open_issues_count}}
-
         </mat-card-subtitle>
-
     </mat-card-title-group>
+
+
     <mat-card-content>
         <div *ngIf="project_item.description">
-            {{project_item.description}}
+            <!-- {{project_item.description}} -->
         </div>
-
     </mat-card-content>
 
     <mat-card-actions>
         <button mat-button (click)="onProjectSelected()" i18n="@@btnid">See More</button>
     </mat-card-actions>
-    <!--  <mat-divider></mat-divider> -->
-
-    <!--  <button mat-icon-button (click)="onProjectSelected()" class="end">
-            <mat-icon>info</mat-icon>
-        </button> -->
-
 
 </mat-card>
