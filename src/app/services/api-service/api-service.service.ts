@@ -83,7 +83,7 @@ export class ApiService {
     return this.http.get<Issue[]>(`${this.url}/projects/${index}/issues/${iid}`, { headers: headers });
   }
 
-  public getMacroLinks(index: number, iid: number) {
+  public getIssueLinks(index: number, iid: number) {
 
     const headers = {
       'Content-Type': 'application/json',
