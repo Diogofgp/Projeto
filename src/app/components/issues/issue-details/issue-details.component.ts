@@ -13,46 +13,64 @@ import { ApiService } from 'src/app/services/api-service/api-service.service';
 })
 export class IssueDetailsComponent implements OnInit {
 
+  issue_id: number;
   id: number;
-  projectId: Project;
   sub: Subscription;
-  public issue = <any>[];
 
+  public issueList = <any>[];
   public project = <any>[];
-  projid: number;
+  public macroIssues = <any>[];
+
 
   constructor(private apiService: ApiService,
-    private route: ActivatedRoute,
-    private router: Router) { Chart.register(...registerables) }
+    private route: ActivatedRoute) { Chart.register(...registerables) }
 
   ngOnInit(): void {
 
-    /* this.sub = this.apiService.getProjectById(this.id)
-      .subscribe(
-        (proj: Project[]) => {
-          this.project = proj;
-          this.projectId = this.apiService.getProjectId(this.id);
-        }
-      );
+    /* console.log(this.id)
+    console.log(this.issue_id) */
 
     this.route.params
       .subscribe(
         (params: Params) => {
-          this.issue = +params['issue_id'];
 
+          this.id = +params['id'];
+          this.issue_id = +params['issue_id'];
         }
       );
 
-    this.sub = this.apiService.getIssuesByProjectId(this.projectId.id)
+    /* console.log(this.id)
+    console.log(this.issue_id) */
+
+    this.sub = this.apiService.getProjectById(this.id)
       .subscribe(
-        (is: Issue[]) => {
-          this.issue = is;
+        (proj: Project[]) => {
+          this.project = proj;
         }
-      ); */
+      );
+
+    this.sub = this.apiService.getIssueDetailsById(this.id, this.issue_id)
+      .subscribe(
+        (issue: Issue[]) => {
+
+          this.issueList = issue;
+          console.log(this.issueList)
+        }
+      );
+
+    this.sub = this.apiService.getMacroLinks(this.id, this.issue_id)
+      .subscribe(
+        (macro: Issue[]) => {
+
+          this.macroIssues = macro;
+          console.log(this.macroIssues)
+        }
+      );
   }
 
-  onCheckIssueDetails() {
-    this.router.navigate(['issue_details', this.id]);
-  }
+  /* onCheckIssueDetails() {
+    this.router.navigate(['project_details', this.id, 'issue_details', this.issue_id]);
+
+  } */
 
 }

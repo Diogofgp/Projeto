@@ -31,14 +31,24 @@ const routes: Routes = [
     component: GraphsComponent,
   },
 
-  { path: ':id/project_details', component: ProjectDetailsComponent },
-  { path: ':issue_id/issue_details', component: IssueDetailsComponent },
+  {
+    path: 'project_details/:id', component: ProjectDetailsComponent,
 
-  /*   { path: ':id/project_details', component: ProjectDetailsComponent }, */
-  /* {
-    path: '**',
-    component: NotFoundComponent,
-  }, */
+    children: [
+      /*  {
+         path: ':id', // child route path
+         component: ProjectDetailsComponent, // child route component that the router renders
+       }, */
+      /*   {
+          path: 'issue_details/:issue_id',
+          component: IssueDetailsComponent,
+        } */
+
+    ],
+  },
+  { path: 'project_details/:id/issue_details/:issue_id', component: IssueDetailsComponent }
+
+
 ];
 
 @NgModule({

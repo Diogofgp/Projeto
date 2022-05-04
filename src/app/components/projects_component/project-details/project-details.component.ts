@@ -7,6 +7,7 @@ import { Issue } from '../../../models/issues.model';
 import { Label } from '../../../models/labels.model';
 import { Chart, registerables } from 'chart.js';
 import { MileStones } from '../../../models/milestones.model';
+import { LoadingService } from 'src/app/services/loading';
 
 @Component({
   selector: 'app-project-details',
@@ -16,13 +17,12 @@ import { MileStones } from '../../../models/milestones.model';
 export class ProjectDetailsComponent implements OnInit {
 
   id: number;
-  projectId: Project;
   sub: Subscription;
   public project = <any>[];
+  loading$ = this.loader.loading$;
 
   constructor(private apiService: ApiService,
-    private route: ActivatedRoute,
-    private router: Router) {
+    private route: ActivatedRoute, public loader: LoadingService) {
     Chart.register(...registerables)
   }
 
@@ -33,7 +33,6 @@ export class ProjectDetailsComponent implements OnInit {
         (params: Params) => {
           this.id = +params['id'];
           /*  this.projectId = this.apiService.getProjectId(this.id); */
-
         }
       );
 

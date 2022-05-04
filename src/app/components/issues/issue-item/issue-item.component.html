@@ -29,7 +29,10 @@
             <br>
             issue state: {{issue_item.state}}
             <br>
-            issue state: {{issue_item.assignee}}
+            <div *ngIf="issue_item.assignee">
+                issue assignee: {{issue_item.assignee.name}}
+            </div>
+
         </mat-card-subtitle>
     </mat-card-title-group>
 
