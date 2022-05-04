@@ -20,6 +20,9 @@ export class IssuesListComponent implements OnInit {
   public issuesList = [];
   public projectList = [];
   subscription: Subscription;
+  totalIssuesOpened: number = 0;
+  totalIssuesClosed: number = 0;
+
 
   constructor(private apiService: ApiService, private route: ActivatedRoute) { }
 
@@ -47,8 +50,28 @@ export class IssuesListComponent implements OnInit {
           /*  console.log(this.id)
            console.log(this.issue_id) */
           this.issuesList = issue;
+          this.getTotalIssuesOpened();
+          this.getTotalIssuesClosed();
         }
       );
+  }
+
+  getTotalIssuesOpened() {
+
+    this.issuesList.forEach(issue => {
+      if (issue.state == "opened")
+        this.totalIssuesOpened++;
+    });
+    return this.totalIssuesOpened;
+  }
+
+  getTotalIssuesClosed() {
+
+    this.issuesList.forEach(issue => {
+      if (issue.state == "closed")
+        this.totalIssuesClosed++;
+    });
+    return this.totalIssuesClosed;
   }
 
 

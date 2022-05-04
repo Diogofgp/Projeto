@@ -226,7 +226,7 @@ export class IssuesComponent implements OnInit {
 
       let id = element.iid;
 
-      this.sub = this.apiService.getMacroLinks(this.id, element.iid)
+      this.sub = this.apiService.getIssueLinks(this.id, element.iid)
         .subscribe(
           (proj: Issue[]) => {
             //console.log("Links: ", proj);

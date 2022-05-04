@@ -58,7 +58,7 @@ export class IssueDetailsComponent implements OnInit {
         }
       );
 
-    this.sub = this.apiService.getMacroLinks(this.id, this.issue_id)
+    this.sub = this.apiService.getIssueLinks(this.id, this.issue_id)
       .subscribe(
         (macro: Issue[]) => {
 
