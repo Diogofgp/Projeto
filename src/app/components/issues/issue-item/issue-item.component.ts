@@ -34,13 +34,13 @@ export class IssueItemComponent implements OnInit {
       .subscribe(
         (params: Params) => {
 
-          console.log(this.issue_item)
+          /*   console.log(this.issue_item) */
 
           this.id = +params['id'];
           /* this.issue_item.iid = +params['issue_id']; */
 
-          console.log(this.id)
-          console.log(this.issue_item)
+          /* console.log(this.id)
+          console.log(this.issue_item) */
           /*  this.projectId = this.apiService.getProjectId(this.id); */
         }
       );

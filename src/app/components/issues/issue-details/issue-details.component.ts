@@ -15,12 +15,11 @@ export class IssueDetailsComponent implements OnInit {
 
   issue_id: number;
   id: number;
-
-
   sub: Subscription;
+
   public issueList = <any>[];
   public project = <any>[];
-  subscription: Subscription;
+  public macroIssues = <any>[];
 
 
   constructor(private apiService: ApiService,
@@ -40,8 +39,8 @@ export class IssueDetailsComponent implements OnInit {
         }
       );
 
-    console.log(this.id)
-    console.log(this.issue_id)
+    /* console.log(this.id)
+    console.log(this.issue_id) */
 
     this.sub = this.apiService.getProjectById(this.id)
       .subscribe(
@@ -50,12 +49,21 @@ export class IssueDetailsComponent implements OnInit {
         }
       );
 
-    this.subscription = this.apiService.getIssueDetailsById(this.id, this.issue_id)
+    this.sub = this.apiService.getIssueDetailsById(this.id, this.issue_id)
       .subscribe(
         (issue: Issue[]) => {
 
           this.issueList = issue;
           console.log(this.issueList)
+        }
+      );
+
+    this.sub = this.apiService.getMacroLinks(this.id, this.issue_id)
+      .subscribe(
+        (macro: Issue[]) => {
+
+          this.macroIssues = macro;
+          console.log(this.macroIssues)
         }
       );
   }

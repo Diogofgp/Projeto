@@ -1,19 +1,7 @@
--
-
 <div>
     <br>
     <h1>Title : {{issueList.title}}</h1>
 </div>
-
-<br>
-<h1>---Issue Details---</h1>
-<mat-card>
-    Name: {{issueList.title}}
-    <br>
-    Id: {{issueList.iid}}
-</mat-card>
-
-
 
 <br>
 <h1>---Projeto associado---</h1>
@@ -21,4 +9,67 @@
     Name: {{project.name_with_namespace}}
     <br>
     Id: {{project.id}}
+</mat-card>
+
+<br>
+<h1>---Issue Details---</h1>
+<mat-card>
+    Name: {{issueList.title}}
+    <br>
+    Id: {{issueList.iid}}
+    <br>
+    state: {{issueList.state}}
+</mat-card>
+
+<br>
+<h1>---Issue Links (macros)---</h1>
+<mat-card *ngFor="let macro of macroIssues">
+
+    <mat-card-title-group>
+
+        <mat-card-title>
+            {{macro.title}}
+        </mat-card-title>
+
+
+        <mat-card-subtitle>
+            <br>
+            Link Issue id:{{macro.iid}}
+            <br>
+            Link issue state: {{macro.state}}
+        </mat-card-subtitle>
+    </mat-card-title-group>
+
+    <br>
+
+
+
+    <mat-card-content>
+
+
+        ---TIME STATS---
+        <br><br>
+        Time Estimate: {{macro.time_stats.time_estimate}} seconds
+        <br>
+        Total Time Spent: {{macro.time_stats.total_time_spent}}
+        <br>
+        Human Time Estimate: {{macro.time_stats.human_time_estimate}}
+        <br>
+        Human Total Time Spent: {{macro.time_stats.human_total_time_spent}}
+        <br>
+        <div *ngIf="macro.assignee">
+            Assignee: {{macro.assignee.username}}
+        </div>
+        <br>
+        <div *ngIf="macro.milestone">
+            <h3>Milestone associada: {{macro.milestone.title}}</h3>
+
+            <br>
+        </div>
+
+
+    </mat-card-content>
+
+
+
 </mat-card>
