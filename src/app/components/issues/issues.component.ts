@@ -234,7 +234,7 @@ export class IssuesComponent implements OnInit {
             //this.teste = proj;
             proj.forEach(element => {
 
-              this.mapIdsForMacros.set(element.iid, id);
+              /*  this.mapIdsForMacros.set(element.iid, id); */
             });
           }
         );

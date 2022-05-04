@@ -13,12 +13,10 @@ import { LoadingService } from 'src/app/services/loading';
 export class ProjectListComponent implements OnInit {
 
   @Output() projectWasSelected = new EventEmitter<Project>();
-  @Input() totalProjs: number;
 
   public projectList = [];
   subscription: Subscription;
   loading$ = this.loader.loading$;
-  cards = new Observable;
 
   constructor(private apiService: ApiService, public loader: LoadingService) { }
 
@@ -32,14 +30,6 @@ export class ProjectListComponent implements OnInit {
 
 
   }
-
-  /*  public getTotal() {
- 
-     this.projectList.forEach(function (value) {
-       this.totalProjs++;
-     });
-     return this.totalProjs;
-   } */
 
 
 }

@@ -1,6 +1,7 @@
 export class Issue {
 
-    public iid: number;
+    public iid: string;
+    public project_id: number;
     public title: string;
     public state: string;
     public time_stats: [];
@@ -16,7 +17,7 @@ export class Issue {
 
     }; */
 
-    constructor(iid: number, title: string, state: string, time_stats: [], assignee: [], labels: [], milestone: []) {
+    constructor(iid: string, title: string, state: string, time_stats: [], assignee: [], labels: [], milestone: []) {
         this.iid = iid;
         this.title = title;
         this.state = state;

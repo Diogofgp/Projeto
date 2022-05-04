@@ -1,13 +1,24 @@
-<!-- <div>
+-
+
+<div>
     <br>
-    <h1>{{issue.title}}</h1>
+    <h1>Title : {{issueList.title}}</h1>
 </div>
 
 <br>
-<h1>---Project Details---</h1>
+<h1>---Issue Details---</h1>
 <mat-card>
-    Name: {{issue.title}}
+    Name: {{issueList.title}}
     <br>
-    Id: {{issue.iid}}
-</mat-card> -->
-O CARALHO
+    Id: {{issueList.iid}}
+</mat-card>
+
+
+
+<br>
+<h1>---Projeto associado---</h1>
+<mat-card>
+    Name: {{project.name_with_namespace}}
+    <br>
+    Id: {{project.id}}
+</mat-card>

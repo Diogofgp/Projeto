@@ -13,37 +13,39 @@ import { LoadingService } from 'src/app/services/loading';
 })
 export class IssuesListComponent implements OnInit {
 
-
   @Output() issueWasSelected = new EventEmitter<Issue>();
 
+  /* issue_id: number; */
   id: number;
-  kek: number;
   public issuesList = [];
+  public projectList = [];
   subscription: Subscription;
-  loading$ = this.loader.loading$;
 
-  constructor(private apiService: ApiService, public loader: LoadingService, private route: ActivatedRoute) { }
+  constructor(private apiService: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    /* this.subscription = this.apiService.getProjects()
-    .subscribe(
-      (projectList: Project[]) => {
-        this.projectList = projectList;
-      }
-    ); */
+    this.subscription = this.apiService.getProjects()
+      .subscribe(
+        (projectList: Project[]) => {
+          this.projectList = projectList;
+        }
+      );
 
     this.route.params
       .subscribe(
         (params: Params) => {
+          /* project id */
           this.id = +params['id'];
-
         }
       );
 
     this.subscription = this.apiService.getIssuesByProjectId(this.id)
       .subscribe(
         (issue: Issue[]) => {
+          console.log(this.id)
+          /*  console.log(this.id)
+           console.log(this.issue_id) */
           this.issuesList = issue;
         }
       );
