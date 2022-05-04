@@ -27,10 +27,17 @@
             <br>
             Id: {{issue_item.iid}}
             <br>
-            issue state: {{issue_item.state}}
+            Issue State: {{issue_item.state}}
             <br>
             <div *ngIf="issue_item.assignee">
-                issue assignee: {{issue_item.assignee.name}}
+                Issue Assignee: {{issue_item.assignee.name}}
+            </div>
+            <div *ngIf="issue_item.labels">
+                Labels:
+                <br>
+                <div *ngFor="let label of issue_item.labels">
+                    -{{label}}
+                </div>
             </div>
 
         </mat-card-subtitle>
