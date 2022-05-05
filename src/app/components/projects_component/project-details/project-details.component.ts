@@ -1,12 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { ApiService } from 'src/app/services/api-service/api-service.service';
 import { Project } from '../../../models/project.model';
 import { Subscription } from 'rxjs';
-import { Issue } from '../../../models/issues.model';
-import { Label } from '../../../models/labels.model';
 import { Chart, registerables } from 'chart.js';
-import { MileStones } from '../../../models/milestones.model';
 import { LoadingService } from 'src/app/services/loading';
 
 @Component({

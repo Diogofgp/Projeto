@@ -4,7 +4,7 @@ import { Chart, registerables } from 'chart.js';
 import { Subscription } from 'rxjs';
 import { Issue } from 'src/app/models/issues.model';
 import { Label } from 'src/app/models/labels.model';
-import { MileStones } from 'src/app/models/milestones.model';
+import { Milestone } from 'src/app/models/milestones.model';
 import { Project } from 'src/app/models/project.model';
 import { ApiService } from 'src/app/services/api-service/api-service.service';
 
@@ -100,7 +100,7 @@ export class IssuesComponent implements OnInit {
 
     this.sub = this.apiService.getMilestones(this.id)
       .subscribe(
-        (milestones: MileStones[]) => {
+        (milestones: Milestone[]) => {
           this.milestonesList = milestones;
           //console.log("MS: ", this.milestonesList);
         }

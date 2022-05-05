@@ -40,6 +40,9 @@ import { IssuesComponent } from './components/issues/issues.component';
 import { IssuesListComponent } from './components/issues/issues-list/issues-list.component';
 import { IssueItemComponent } from './components/issues/issue-item/issue-item.component';
 import { IssueDetailsComponent } from './components/issues/issue-details/issue-details.component';
+import { MilestonesListComponent } from './components/milestones/milestones-list/milestones-list.component';
+import { MilestonesItemComponent } from './components/milestones/milestones-item/milestones-item.component';
+import { MilestonesDetailsComponent } from './components/milestones/milestones-details/milestones-details.component';
 
 
 @NgModule({
@@ -57,6 +60,9 @@ import { IssueDetailsComponent } from './components/issues/issue-details/issue-d
     IssuesListComponent,
     IssueItemComponent,
     IssueDetailsComponent,
+    MilestonesListComponent,
+    MilestonesItemComponent,
+    MilestonesDetailsComponent,
   ],
   imports: [
     BrowserModule,

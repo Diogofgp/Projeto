@@ -3,20 +3,25 @@
 <div>
     <br>
     <h1>{{project.name_with_namespace}}</h1>
+
+
+    <br>
+    <h1>---Project Details---</h1>
+    <mat-card>
+        Name: {{project.name_with_namespace}}
+        <br>
+        Id: {{project.id}}
+        <br>
+        Description: {{project.description}}
+    </mat-card>
+
+    <br>
+    <h1>---Project Milestones---</h1>
+    <br>
+
 </div>
 
-<br>
-<h1>---Project Details---</h1>
-<mat-card>
-    Name: {{project.name_with_namespace}}
-    <br>
-    Id: {{project.id}}
-    <br>
-    Description: {{project.description}}
-</mat-card>
+<app-milestones></app-milestones>
 
-<br>
-<h1>---Project Issues---</h1>
-<br>
 
-<app-issues></app-issues>
+<!-- <app-issues></app-issues> -->

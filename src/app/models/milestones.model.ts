@@ -1,12 +1,13 @@
-export class MileStones {
+export class Milestone {
 
-    public id: number;
+    public iid: number;
+    public project_id: number;
     public title: string;
     public description: string;
     public state: string;
 
-    constructor(id: number, title: string, description: string, state: string) {
-        this.id = id;
+    constructor(iid: number, title: string, description: string, state: string) {
+        this.iid = iid;
         this.title = title;
         this.description = description;
         this.state = state;
