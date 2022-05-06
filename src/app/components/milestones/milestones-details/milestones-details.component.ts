@@ -16,7 +16,9 @@ export class MilestonesDetailsComponent implements OnInit {
   id: number;
   sub: Subscription;
 
-  public milestoneList = <any>[];
+  //public milestone = <any>[];
+  public milestoneIssues = <any>[];
+  milestoneList: Milestone[];
 
   constructor(private apiService: ApiService,
     private route: ActivatedRoute) { }
@@ -26,17 +28,30 @@ export class MilestonesDetailsComponent implements OnInit {
     this.route.params
       .subscribe(
         (params: Params) => {
-
           this.id = +params['id'];
           this.milestone_id = +params['milestone_id'];
+
         }
       );
 
     this.sub = this.apiService.getMilestones(this.id)
       .subscribe(
         (m: Milestone[]) => {
-
           this.milestoneList = m;
+        }
+      );
+
+    // var num = this.milestone_iid - 1;
+    //console.log(num + "num value");
+
+    console.log(this.milestone_id)
+    this.sub = this.apiService.getIssuesByMilestone(this.id, this.milestone_id)
+      .subscribe(
+        (k: Milestone[]) => {
+
+          this.milestoneIssues = k;
+          console.log(this.milestoneIssues + "info")
+          //console.log(this.milestone)
         }
       );
 
