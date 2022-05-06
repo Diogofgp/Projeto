@@ -34,18 +34,6 @@ const routes: Routes = [
 
   {
     path: 'project_details/:id', component: ProjectDetailsComponent,
-
-    children: [
-      /*  {
-         path: ':id', // child route path
-         component: ProjectDetailsComponent, // child route component that the router renders
-       }, */
-      /*   {
-          path: 'issue_details/:issue_id',
-          component: IssueDetailsComponent,
-        } */
-
-    ],
   },
   { path: 'project_details/:id/issue_details/:issue_id', component: IssueDetailsComponent },
   { path: 'project_details/:id/milestone_details/:milestone_id', component: MilestonesDetailsComponent }

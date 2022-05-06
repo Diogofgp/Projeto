@@ -1,5 +1,8 @@
 <br>
-<h1>---Issue Details---</h1>
-<mat-card>
-    Name: {{milestoneList.title}}
+<h1>---Milestone Details---</h1>
+<mat-card *ngFor="let m of milestoneIssues">
+    <!--  Name: {{milestone.title}} -->
+    {{m.id}}
+    {{m.title}}
+
 </mat-card>

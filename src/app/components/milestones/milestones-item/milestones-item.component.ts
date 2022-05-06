@@ -37,6 +37,7 @@ export class MilestonesItemComponent implements OnInit {
     this.sub = this.apiService.getMilestones(this.id)
       .subscribe(
         (m: Milestone[]) => {
+
           this.milestone = m;
         }
       );
@@ -46,6 +47,6 @@ export class MilestonesItemComponent implements OnInit {
   onMilestoneSelected() {
 
     /*   console.log(this.milestone_item.iid); */
-    this.router.navigate(['project_details', this.id, 'milestone_details', this.milestone_item.iid]);
+    this.router.navigate(['project_details', this.id, 'milestone_details', this.milestone_item.id]);
   }
 }
