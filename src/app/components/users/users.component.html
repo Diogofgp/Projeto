@@ -20,7 +20,7 @@
 <div class="content">
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
         <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" fxFlex.md="33%" fxFlex.lg="33%"
-            fxFlex.xl="20%" *ngFor="let user of usersList">
+            fxFlex.xl="20%" *ngFor="let user of activeUsersList">
             <mat-card class="mat-elevation-z4" style="width: 90%; align-content: center; align-items: center;">
                 <mat-card-header>
                     <mat-card-title>{{user.name}}</mat-card-title>
@@ -33,6 +33,9 @@
                         {{user.username}}
                     </p>
                 </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button (click)="onUserSelected()">See More</button>
+                </mat-card-actions>
             </mat-card>
         </div>
     </div>
