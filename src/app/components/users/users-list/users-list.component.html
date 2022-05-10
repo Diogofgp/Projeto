@@ -1,8 +1,8 @@
-<div class="content">
-    <div fxLayout="row wrap" fxLayoutGap="16px grid">
-        <div [fxFlex]="(100) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" fxFlex.md="33%" fxFlex.lg="33%" fxFlex.xl="20%">
-            <app-user-item *ngFor="let iElement of activeUsersList; let i = index" [user_item]="iElement" [index]="i">
-            </app-user-item>
-        </div>
-    </div>
+<div fxLayout="row wrap" fxLayoutGap="16px grid" style="padding: 3%;">
+
+    <app-user-item [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%" fxFlex.lg="33%"
+        fxFlex.xl="33%" *ngFor="let iElement of activeUsersList; let i = index" [user_item]="iElement" [index]="i">
+
+    </app-user-item>
+
 </div>

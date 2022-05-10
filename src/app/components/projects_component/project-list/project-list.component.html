@@ -1,93 +1,14 @@
-<!-- <a href="#" class="list-group-item-clearfix" *ngFor="let pElement of projects">
-    <div class="pull-left">
-        <h3 class="list-group-item-heading">Project id: {{pElement.id}}</h3>
-        <h4 class="list-group-item-text">Project : {{pElement.name}}</h4>
+<mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
 
-        <p class="list-group-item-text">Description: {{pElement.description}}</p>
-        <br>
-        <p class="list-group-item-number">Issues count : {{pElement.open_issues_count}}</p>
+<div fxLayout="row wrap" fxLayoutGap="16px grid" style="padding: 3%;">
 
-    </div>
-
-    <mat-card *ngFor="let pElement of projects">
-        <mat-card-title>
-            {{pElement.name}}
-        </mat-card-title>
-        <mat-card-subtitle>
-
-            {{pElement.readme_url}}
-        </mat-card-subtitle>
-    </mat-card>
-
-</a> -->
-
-
-
-<!-- *ngFor="let p of projects"   [project_details]="pElement"-->
-
-<!-- <mat-card *ngFor="let pElement of projects">
-    <mat-card-title>
-        {{pElement.name}}
-    </mat-card-title>
-    <mat-card-subtitle>
-
-        {{pElement.readme_url}}
-    </mat-card-subtitle>
-</mat-card> -->
-
-<!-- <mat-selection-list #shoes [multiple]="false">
-    <mat-list-option *ngFor="let pElement of projects" [value]="pElement">
-        <mat-card-title>
-            {{pElement.name}}
-        </mat-card-title>
-        <mat-card-subtitle>
-
-            {{pElement.readme_url}}
-        </mat-card-subtitle>
-    </mat-list-option>
-</mat-selection-list> -->
-<!-- 
-<mat-grid-list>
-    <mat-grid-tile>
-        <mat-card>
-
-            <mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
-
-            <app-project-item *ngFor="let pElement of projectList; let i = index" [project_item]="pElement" [index]="i">
-
-            </app-project-item>
-
-        </mat-card>
-    </mat-grid-tile>
-</mat-grid-list> -->
-
-
-
-<!-- <mat-nav-list>
-
-
-    <mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
-
-    <app-project-item *ngFor="let pElement of projectList; let i = index" [project_item]="pElement" [index]="i">
+    <app-project-item [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%"
+        fxFlex.lg="33%" fxFlex.xl="33%" *ngFor="let pElement of projectList; let i = index" [project_item]="pElement"
+        [index]="i">
 
     </app-project-item>
 
-
-</mat-nav-list> -->
-
-
-<mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
-
-<div>
-    <div fxLayout="row wrap" fxLayoutGap="16px grid" style="padding: 3%;">
-
-        <app-project-item [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%"
-            fxFlex.lg="33%" fxFlex.xl="33%" *ngFor="let pElement of projectList; let i = index"
-            [project_item]="pElement" [index]="i">
-
-        </app-project-item>
-
-        <!-- <mat-card class="mat-elevation-z4" style="width: 90%; align-content: center; align-items: center;">
+    <!-- <mat-card class="mat-elevation-z4" style="width: 90%; align-content: center; align-items: center;">
                 <mat-card-header>
                     <mat-card-title>{{user.name}}</mat-card-title>
                 </mat-card-header>
@@ -100,5 +21,4 @@
                 </mat-card-content>
             </mat-card> -->
 
-    </div>
 </div>
