@@ -1,8 +1,15 @@
 <br>
-<h1>---Milestone Details---</h1>
-<mat-card *ngFor="let m of milestoneIssues">
-    <!--  Name: {{milestone.title}} -->
-    {{m.id}}
-    {{m.title}}
+<mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
+<h1>-------Milestone Details-------</h1>
 
-</mat-card>
+<h1>---Issues associated to milestone---</h1>
+<!-- <mat-card *ngFor="let m of milestoneIssues">
+    id: {{m.id}}
+    <br>
+    title: {{m.title}}
+
+</mat-card> -->
+
+<app-issues>
+
+</app-issues>

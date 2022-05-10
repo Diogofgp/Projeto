@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Milestone } from 'src/app/models/milestones.model';
 import { ApiService } from 'src/app/services/api-service/api-service.service';
+import { LoadingService } from 'src/app/services/loading';
 
 @Component({
   selector: 'app-milestones-details',
@@ -11,17 +12,17 @@ import { ApiService } from 'src/app/services/api-service/api-service.service';
 })
 export class MilestonesDetailsComponent implements OnInit {
 
-
   milestone_id: number;
   id: number;
   sub: Subscription;
+  loading$ = this.loader.loading$;
 
   //public milestone = <any>[];
   public milestoneIssues = <any>[];
   milestoneList: Milestone[];
 
   constructor(private apiService: ApiService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute, public loader: LoadingService) { }
 
   ngOnInit(): void {
 
