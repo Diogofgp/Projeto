@@ -45,6 +45,15 @@ export class ApiService {
     return this.http.get<any[]>(`${this.url}/users?per_page=1000`, { headers: headers });
   }
 
+  public getUserById(index: number) {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    }
+
+    return this.http.get<any[]>(`${this.url}/users/${index}`, { headers: headers });
+  }
+
   public getIssuesByProjectId(index: number) {
     const headers = {
       'Content-Type': 'application/json',

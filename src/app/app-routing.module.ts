@@ -7,6 +7,7 @@ import { IssuesComponent } from './components/issues/issues.component';
 import { MilestonesDetailsComponent } from './components/milestones/milestones-details/milestones-details.component';
 import { ProjectDetailsComponent } from './components/projects_component/project-details/project-details.component';
 import { ProjectsComponent } from './components/projects_component/projects.component';
+import { UserDetailsComponent } from './components/users/user-details/user-details.component';
 import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
@@ -36,7 +37,10 @@ const routes: Routes = [
     path: 'project_details/:id', component: ProjectDetailsComponent,
   },
   { path: 'project_details/:id/issue_details/:issue_id', component: IssueDetailsComponent },
-  { path: 'project_details/:id/milestone_details/:milestone_id', component: MilestonesDetailsComponent }
+  { path: 'project_details/:id/milestone_details/:milestone_id', component: MilestonesDetailsComponent },
+  {
+    path: 'user_details/:user_id', component: UserDetailsComponent,
+  }
 
 
 ];

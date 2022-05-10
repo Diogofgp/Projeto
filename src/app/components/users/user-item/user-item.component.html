@@ -1,0 +1,29 @@
+<mat-card class="mat-elevation-z4" style="width: 90%; align-content: center; align-items: center;">
+    <mat-card-header>
+        <mat-card-title>{{user.name}}</mat-card-title>
+    </mat-card-header>
+
+    <img mat-card-image style="padding-left: 5%; padding-right: 5%; padding-top: 5%;" src="{{user.avatar_url}}">
+    <mat-card-content>
+        <p>
+            {{user.username}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="onUserSelected()">See More</button>
+    </mat-card-actions>
+</mat-card>
+
+<!-- <mat-card>
+
+    <mat-card-title-group>
+
+        <mat-card-title>Title: {{user.name}}</mat-card-title>
+    </mat-card-title-group>
+
+
+
+    <mat-card-actions>
+        <button mat-button (click)="onUserSelected()">See More</button>
+    </mat-card-actions>
+</mat-card> -->

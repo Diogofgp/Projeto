@@ -11,6 +11,8 @@ import { User } from '../../models/users.model';
 })
 export class UsersComponent implements OnInit {
 
+  selectedUser: User;
+
   sub: Subscription;
   public usersList = [];
   public activeUsersList = [];
@@ -38,6 +40,9 @@ export class UsersComponent implements OnInit {
       }
     });
   }
+
+
+
 
   onUserSelected() {
 
