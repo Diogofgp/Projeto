@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Project } from 'src/app/models/project.model';
+import { User } from 'src/app/models/users.model';
 import { ApiService } from 'src/app/services/api-service/api-service.service';
 
 @Component({
@@ -14,9 +15,9 @@ export class UserDetailsComponent implements OnInit {
   user_id: number;
   sub: Subscription;
 
-  public projects = <any>[];
-  public projectIds = <any>[];
-  public userProjectIds = <any>[];
+  public projects: Project[];
+  public projectIds = [];
+  public userProjectIds = [];
   public userProjectList: Project[];
 
   constructor(private apiService: ApiService,
@@ -37,54 +38,86 @@ export class UserDetailsComponent implements OnInit {
     this.sub = this.apiService.getProjects()
       .subscribe(
         (projects: Project[]) => {
-          this.projects = projects;
-          //console.log(projects);
-          this.getProjectIdList(this.projects);
+
+          projects.forEach(element => {
+
+            this.sub = this.apiService.getProjectMembers(element.id)
+              .subscribe(
+                (members: User[]) => {
+
+                  members.forEach(el => {
+                    if (el.id == this.user_id) {
+                      this.userProjectIds.push(element)
+                      console.log("uPId: ", this.userProjectIds);
+                    }
+                  });
+                }
+              );
+
+          });
         }
       );
 
   }
 
-  async getProjectIdList(projects) {
+  /* getProjectIdList(projects) {
     projects.forEach(element => {
-      //console.log(element.id);
-      this.projectIds.push(element.id)
+
+      //this.projectIds.push(element.id);
+      //console.log("uPId: ", element);
+      this.sub = this.apiService.getProjectMembers(element.id)
+        .subscribe(
+          (members: User[]) => {
+
+            members.forEach(el => {
+              if (el.id == this.user_id) {
+                //uPId.push(element)
+                //console.log("uPId: ", uPId);
+              }
+            });
+          }
+        );
+
+      //console.log("Teste: ", element);
     });
-    await this.getUserProjects(this.projectIds);
+
+    this.userProjectIds = this.getUserProjects(this.projectIds);
+    //console.log("IDS O: ", this.userProjectIds);
   }
 
-  async getUserProjects(projectIds) {
+  getUserProjects(projectIds) {
+
+    let uPId = [];
 
     projectIds.forEach(element => {
 
       this.sub = this.apiService.getProjectMembers(element)
         .subscribe(
-          (members: Project[]) => {
+          (members: User[]) => {
+
             members.forEach(el => {
               if (el.id == this.user_id) {
-                this.userProjectIds.push(element)
-                console.log("E ", element);
-                //console.log("A ", this.userProjectList);
+                uPId.push(element)
+                //console.log("uPId: ", uPId);
               }
             });
           }
         );
     });
+    //console.log("IDS I: ", uPId);
+    return uPId;
+  } */
 
-    await this.getProjects(this.userProjectIds)
-
-  }
-
-  getProjects(projIds) {
-    console.log("ELEMENT: ", projIds);
-
+  /* getProjects(projIds) {
+    console.log("ELEMENTO: ", projIds);
 
 
-    /* for (let i = 0; i < projIds.length; i++) {
+
+     for (let i = 0; i < projIds.length; i++) {
       //console.log("ELEMENT: ", projIds[i]);
-    } */
+    } 
 
-    /* projIds.forEach(element => {
+     projIds.forEach(element => {
       console.log("ELEMENT: ", element);
       this.sub = this.apiService.getProjectById(element)
         .subscribe(
@@ -94,10 +127,10 @@ export class UserDetailsComponent implements OnInit {
             //this.userProjectList.push(proj);
           }
         );
-    }); */
+    }); 
 
     //console.log(this.userProjectList);
-  }
+  } */
 
 }
 
