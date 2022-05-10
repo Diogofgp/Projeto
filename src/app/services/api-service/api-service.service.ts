@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Issue } from 'src/app/models/issues.model';
 import { Milestone } from 'src/app/models/milestones.model';
 import { Project } from 'src/app/models/project.model';
+import { User } from 'src/app/models/users.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,9 @@ export class ApiService {
   private milestones: Milestone[] = [];
 
   constructor(private http: HttpClient) { }
+
+
+  //PROJECT CALLS
 
   public getProjects() {
 
@@ -36,6 +40,18 @@ export class ApiService {
     return this.http.get<Project[]>(`${this.url}/projects/${index}`, { headers: headers });
   }
 
+  public getProjectMembers(index: number) {
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    }
+
+    return this.http.get<any[]>(`${this.url}/projects/${index}/members`, { headers: headers });
+  }
+
+  //USER CALLS
+
   public getUsers() {
     const headers = {
       'Content-Type': 'application/json',
@@ -54,6 +70,8 @@ export class ApiService {
     return this.http.get<any[]>(`${this.url}/users/${index}`, { headers: headers });
   }
 
+  //ISSUES CALLS
+
   public getIssuesByProjectId(index: number) {
     const headers = {
       'Content-Type': 'application/json',
@@ -63,25 +81,6 @@ export class ApiService {
     const response = this.http.get<any[]>(`${this.url}/projects/${index}/issues?per_page=1000`, { headers: headers });
     //console.log("TESTE: ", response);
     return response;
-  }
-
-
-  public getLabels(index: number) {
-    const headers = {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.auth_token}`
-    }
-
-    return this.http.get<any[]>(`${this.url}/projects/${index}/labels?per_page=1000`, { headers: headers });
-  }
-
-  public getMilestones(index: number) {
-    const headers = {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.auth_token}`
-    }
-
-    return this.http.get<any[]>(`${this.url}/projects/${index}/milestones?per_page=1000`, { headers: headers });
   }
 
   public getIssueDetailsById(index: number, iid: number) {
@@ -102,6 +101,28 @@ export class ApiService {
     }
 
     return this.http.get<Issue[]>(`${this.url}/projects/${index}/issues/${iid}/links`, { headers: headers });
+  }
+
+  //LABEL CALLS
+
+  public getLabels(index: number) {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    }
+
+    return this.http.get<any[]>(`${this.url}/projects/${index}/labels?per_page=1000`, { headers: headers });
+  }
+
+  //MILESTONE CALLS
+
+  public getMilestones(index: number) {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    }
+
+    return this.http.get<any[]>(`${this.url}/projects/${index}/milestones?per_page=1000`, { headers: headers });
   }
 
   public getIssuesByMilestone(index: number, id: number) {

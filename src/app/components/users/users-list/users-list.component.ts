@@ -38,7 +38,7 @@ export class UsersListComponent implements OnInit {
         this.activeUsersList.push(element);
       }
     });
-    console.log(this.activeUsersList);
+    //console.log(this.activeUsersList);
   }
 
 }
