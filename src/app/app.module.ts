@@ -46,6 +46,7 @@ import { MilestonesDetailsComponent } from './components/milestones/milestones-d
 import { UsersListComponent } from './components/users/users-list/users-list.component';
 import { UserItemComponent } from './components/users/user-item/user-item.component';
 import { UserDetailsComponent } from './components/users/user-details/user-details.component';
+import { MatTableModule } from '@angular/material/table'
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { UserDetailsComponent } from './components/users/user-details/user-detai
     MilestonesDetailsComponent,
     UsersListComponent,
     UserItemComponent,
-    UserDetailsComponent,
+    UserDetailsComponent
+
   ],
   imports: [
     BrowserModule,
@@ -90,7 +92,8 @@ import { UserDetailsComponent } from './components/users/user-details/user-detai
     MatMenuModule,
     LayoutModule,
     MatProgressSpinnerModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatTableModule
 
   ],
   providers: [{
