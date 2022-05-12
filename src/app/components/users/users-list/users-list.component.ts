@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/users.model';
 import { ApiService } from 'src/app/services/api-service/api-service.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { LoadingService } from 'src/app/services/loading';
 
 /* const ELEMENT_DATA: User[] = [
   {
@@ -16,9 +17,6 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   }
 
 ]; */
-
-
-
 
 @Component({
   selector: 'app-users-list',
@@ -41,13 +39,13 @@ export class UsersListComponent implements OnInit {
   sub: Subscription;
   public usersList = [];
   public activeUsersList = [];
-
+  loading$ = this.loader.loading$;
 
   //columnsToDisplay: string[] = ['id', 'username', 'name', 'description', 'state', 'avatar_url', 'web_url'];
   //dataSource = ELEMENT_DATA;
   //expandedElement: User | null;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, public loader: LoadingService) { }
   /* 
     dataSource: User[] = [
       {
@@ -75,6 +73,7 @@ export class UsersListComponent implements OnInit {
         }
       );
 
+
   }
 
   getActiveUsers(usersList) {
@@ -83,7 +82,6 @@ export class UsersListComponent implements OnInit {
         this.activeUsersList.push(element);
       }
     });
-
   }
 
 

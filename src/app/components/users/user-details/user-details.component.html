@@ -1,0 +1,17 @@
+<div *ngIf="starredProjects">
+    <div *ngFor="let item of starredProjects">
+        <h1>Starred Projects</h1>
+        <p>{{item.name_with_namespace}}</p>
+        <p>{{item.description}}</p>
+        <p>{{item.id}}</p>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<div *ngIf="projectsOwned">
+    <div *ngFor="let item of projectsOwned">
+        <h1>Owned Projects</h1>
+        <p>{{item.name}}</p>
+        <p>{{item.description}}</p>
+        <p>{{item.id}}</p>
+    </div>
+</div>

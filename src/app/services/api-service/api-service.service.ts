@@ -135,6 +135,30 @@ export class ApiService {
     return this.http.get<Milestone[]>(`${this.url}/projects/${index}/milestones/${id}/issues`, { headers: headers });
   }
 
+
+  public getUserStarredProjects(id: number) {
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    }
+
+    return this.http.get<User[]>(`${this.url}/users/${id}/starred_projects`, { headers: headers });
+  }
+
+  public getUserProjectsOwned(id: number) {
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    }
+
+    return this.http.get<User[]>(`${this.url}/users/${id}/projects`, { headers: headers });
+  }
+
+
+
+
   setProjects(projects: Project[]) {
     this.projects = projects;
   }
