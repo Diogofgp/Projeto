@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { Issue } from 'src/app/models/issues.model';
 import { Project } from 'src/app/models/project.model';
 import { ApiService } from 'src/app/services/api-service/api-service.service';
+import ChartjsPluginStacked100 from "chartjs-plugin-stacked100";
 
 @Component({
   selector: 'app-issue-details',
@@ -15,17 +16,22 @@ export class IssueDetailsComponent implements OnInit {
 
   issue_id: number;
   id: number;
-  sub: Subscription;
+  sub1: Subscription;
+  sub2: Subscription;
+  sub3: Subscription;
 
   public issueList = <any>[];
   public project = <any>[];
   public macroIssues = <any>[];
   public totalTimeSpentSecs = 0;
   public totalTimeSpent;
-  public timeEstimate;
+  public timeEstimate: string;
+  public percentage: number;
+
+  barChart: any = []
 
   constructor(private apiService: ApiService,
-    private route: ActivatedRoute) { Chart.register(...registerables) }
+    private route: ActivatedRoute) { Chart.register(...registerables, ChartjsPluginStacked100) }
 
   ngOnInit(): void {
 
@@ -44,41 +50,130 @@ export class IssueDetailsComponent implements OnInit {
     /* console.log(this.id)
     console.log(this.issue_id) */
 
-    this.sub = this.apiService.getProjectById(this.id)
+    this.sub1 = this.apiService.getProjectById(this.id)
       .subscribe(
         (proj: Project[]) => {
           this.project = proj;
+
+          this.sub2 = this.apiService.getIssueDetailsById(this.id, this.issue_id)
+            .subscribe(
+              (issue: Issue[]) => {
+
+                this.issueList = issue;
+                this.timeEstimate = this.time_convert(this.issueList.time_stats.time_estimate);
+
+                this.sub3 = this.apiService.getIssueLinks(this.id, this.issue_id)
+                  .subscribe(
+                    (macro: Issue[]) => {
+
+                      this.macroIssues = macro;
+
+                      console.log("IL : ", this.issueList);
+                      let timeEstimateSecs = this.issueList.time_stats.time_estimate
+
+                      console.log("TIME ESTIMATE? : ", this.issueList.time_stats.time_estimate);
+
+                      this.percentage = this.getTotalTimeSpent(this.macroIssues, timeEstimateSecs);
+                      console.log("TESTE : ", this.percentage);
+
+                      this.barChart = new Chart('percentchart', {
+                        type: 'bar',
+                        data: {
+                          labels: ["%"],
+                          datasets: [
+                            {
+                              label: 'Spent',
+                              data: [this.percentage],
+                              backgroundColor: 'rgba(255, 26, 104, 0.2)',
+                              borderColor: 'rgba(255, 26, 104, 1)',
+                              borderWidth: 1,
+                            },
+                            {
+                              label: 'Available',
+                              data: [40],
+                              backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                              borderColor: 'rgba(0, 0, 0, 1)',
+                              borderWidth: 1,
+                            },
+                          ],
+                        },
+                        options: {
+                          indexAxis: 'y',
+                          plugins: {
+                            title: {
+                              display: true,
+                              text: 'Time Used',
+
+                            },
+                            legend: {
+                              display: false,
+                              position: 'right',
+
+                            },
+                            stacked100: {
+                              enable: true,
+                              //replaceTooltipLabel: false,
+                              precision: 3,
+                            }
+                          },
+                        }
+                      });
+
+                    }
+                  );
+
+              }
+            );
         }
       );
 
-    this.sub = this.apiService.getIssueDetailsById(this.id, this.issue_id)
-      .subscribe(
-        (issue: Issue[]) => {
+    //this.percentage = await this.getIL()
 
-          this.issueList = issue;
-          this.timeEstimate = this.time_convert(this.issueList.time_stats.time_estimate);
-        }
-      );
+    //console.log("TESTE FORA: ", this.percentage);
 
-    this.sub = this.apiService.getIssueLinks(this.id, this.issue_id)
+  }
+
+  /* async getIL() {
+    this.sub = (await this.apiService.getIssueLinks(this.id, this.issue_id))
       .subscribe(
-        (macro: Issue[]) => {
+        async (macro: Issue[]) => {
 
           this.macroIssues = macro;
 
-          this.getTotalTimeSpent(this.macroIssues);
+          let timeEstimateSecs = this.issueList.time_stats.time_estimate
+
+          //console.log("TIME ESTIMATE? : ", this.issueList.time_stats.time_estimate);
+
+          this.percentage = await this.getTotalTimeSpent(this.macroIssues, timeEstimateSecs);
+          console.log("T : ", this.percentage);
+          return Promise.resolve(this.percentage)
+
+          
+
         }
       );
-  }
+    return Promise.resolve(0)
+  } */
 
 
-  getTotalTimeSpent(macros) {
+  getTotalTimeSpent(macros, timeEst) {
 
     macros.forEach(element => {
       this.totalTimeSpentSecs = this.totalTimeSpentSecs + element.time_stats.total_time_spent;
     });
 
     this.totalTimeSpent = this.time_convert(this.totalTimeSpentSecs);
+
+    let te = timeEst;
+    let tu = this.totalTimeSpentSecs;
+
+    //console.log("TE: ", te)
+    //console.log("TU: ", tu)
+
+    //this.percentage = (tu * 100 / te).toFixed(3);
+    let percentage: number = (tu * 100 / te);
+
+    return percentage
 
   }
 

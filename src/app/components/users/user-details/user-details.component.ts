@@ -58,6 +58,9 @@ export class UserDetailsComponent implements OnInit {
         }
       );
 
+    console.log("uPId FORA: ", this.userProjectIds);
+
+
   }
 
   /* getProjectIdList(projects) {

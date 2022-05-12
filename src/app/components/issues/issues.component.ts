@@ -223,11 +223,11 @@ export class IssuesComponent implements OnInit {
 
   getMacroLinks(macroprojects) {
 
-    macroprojects.forEach(element => {
+    macroprojects.forEach(async element => {
 
       let id = element.iid;
 
-      this.sub = this.apiService.getIssueLinks(this.id, element.iid)
+      this.sub = (await this.apiService.getIssueLinks(this.id, element.iid))
         .subscribe(
           (proj: Issue[]) => {
             //console.log("Links: ", proj);
