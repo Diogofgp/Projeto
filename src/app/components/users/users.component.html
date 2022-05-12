@@ -1,24 +1,8 @@
 <mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
 <app-users-list (userWasSelected)="selectedUser = $event"></app-users-list>
-<!-- <div *ngFor="let user of usersList">
-
-    <br>
-    id: {{user.id}}
-    <br>
-    name: {{user.name}}
-    <br>
-    username: {{user.username}}
-    <br>
-    avatar:
-    <img mat-card-image src="{{user.avatar_url}}" style="width: 10%;">
-    <br>
-    <br>
-    <mat-divider></mat-divider>
-
-</div> -->
 
 
-<div class="content">
+<!-- <div class="content">
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
         <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" fxFlex.md="33%" fxFlex.lg="33%"
             fxFlex.xl="20%" *ngFor="let user of activeUsersList">
@@ -40,4 +24,4 @@
             </mat-card>
         </div>
     </div>
-</div>
+</div> -->

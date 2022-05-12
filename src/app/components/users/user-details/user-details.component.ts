@@ -19,6 +19,9 @@ export class UserDetailsComponent implements OnInit {
   public projectIds = [];
   public userProjectIds = [];
   public userProjectList: Project[];
+  public starredProjects: User[];
+  public projectsOwned: User[];
+
 
   constructor(private apiService: ApiService,
     private route: ActivatedRoute) { }
@@ -63,7 +66,7 @@ export class UserDetailsComponent implements OnInit {
 
   }
 
-  /* getProjectIdList(projects) {
+  /* async getProjectIdList(projects) {
     projects.forEach(element => {
 
       //this.projectIds.push(element.id);
