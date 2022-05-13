@@ -40,14 +40,14 @@ export class ApiService {
     return this.http.get<Project[]>(`${this.url}/projects/${index}`, { headers: headers });
   }
 
-  public getProjectMembers(index: number) {
+  public getProjectUsers(index: number) {
 
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.auth_token}`
     }
 
-    return this.http.get<any[]>(`${this.url}/projects/${index}/members`, { headers: headers });
+    return this.http.get<any[]>(`${this.url}/projects/${index}/users`, { headers: headers });
   }
 
   //USER CALLS
@@ -132,7 +132,7 @@ export class ApiService {
       'Authorization': `Bearer ${this.auth_token}`
     }
 
-    return this.http.get<Milestone[]>(`${this.url}/projects/${index}/milestones/${id}/issues`, { headers: headers });
+    return this.http.get<Issue[]>(`${this.url}/projects/${index}/milestones/${id}/issues`, { headers: headers });
   }
 
 

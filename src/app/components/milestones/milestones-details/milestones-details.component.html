@@ -10,6 +10,35 @@
 
 </mat-card> -->
 
-<app-issues>
+<mat-card *ngFor="let m of milestoneIssues">
 
-</app-issues>
+    <mat-card-title-group>
+
+        <mat-card-title>Title: {{m.title}}</mat-card-title>
+
+        <mat-card-subtitle>
+            <br>
+            Id: {{m.iid}}
+            <br>
+            Issue State: {{m.state}}
+            <br>
+            <div *ngIf="m.assignee">
+                Issue Assignee: {{m.assignee.name}}
+            </div>
+            <div *ngIf="m.labels">
+                Labels:
+                <br>
+                <div *ngFor="let label of m.labels">
+                    -{{label}}
+                </div>
+            </div>
+
+        </mat-card-subtitle>
+    </mat-card-title-group>
+
+
+
+    <mat-card-actions>
+        <button mat-button (click)="onIssueSelected(m)">See More</button>
+    </mat-card-actions>
+</mat-card>

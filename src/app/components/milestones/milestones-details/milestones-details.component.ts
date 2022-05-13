@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Issue } from 'src/app/models/issues.model';
 import { Milestone } from 'src/app/models/milestones.model';
 import { ApiService } from 'src/app/services/api-service/api-service.service';
 import { LoadingService } from 'src/app/services/loading';
@@ -22,7 +23,7 @@ export class MilestonesDetailsComponent implements OnInit {
   milestoneList: Milestone[];
 
   constructor(private apiService: ApiService,
-    private route: ActivatedRoute, public loader: LoadingService) { }
+    private route: ActivatedRoute, private router: Router, public loader: LoadingService) { }
 
   ngOnInit(): void {
 
@@ -39,6 +40,7 @@ export class MilestonesDetailsComponent implements OnInit {
       .subscribe(
         (m: Milestone[]) => {
           this.milestoneList = m;
+          //console.log("MS: ", this.milestoneList)
         }
       );
 
@@ -48,14 +50,31 @@ export class MilestonesDetailsComponent implements OnInit {
     console.log(this.milestone_id)
     this.sub = this.apiService.getIssuesByMilestone(this.id, this.milestone_id)
       .subscribe(
-        (k: Milestone[]) => {
+        (issue: Issue[]) => {
 
-          this.milestoneIssues = k;
-          console.log(this.milestoneIssues + "info")
+          issue.forEach(element => {
+            element.labels.forEach(e => {
+              if (e == "Macro ♠") {
+                this.milestoneIssues.push(element)
+              }
+            });
+          });
+
+          //this.milestoneIssues = issue;
+          //console.log("Macros?: ", this.milestoneIssues)
           //console.log(this.milestone)
         }
       );
 
+  }
+
+  onIssueSelected(issue) {
+
+    //console.log("ISSUE ID ON CLICK: ", issue.iid);
+    /*  project_details/:id/issue_details/:issue_id */
+    /*  this.router.navigate([this.issue_item.iid, 'issue_details',]); */
+    this.router.navigate(['project_details', issue.project_id, 'issue_details', issue.iid]);
+    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
 
 }

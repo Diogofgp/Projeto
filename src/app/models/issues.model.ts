@@ -5,6 +5,7 @@ export class Issue {
     public title: string;
     public state: string;
     public time_stats: [];
+    public task_completion_status: [];
     public assignee: [];
     public labels: [];
     public milestone: [];

@@ -20,15 +20,20 @@ export class IssueDetailsComponent implements OnInit {
   sub2: Subscription;
   sub3: Subscription;
 
-  public issueList = <any>[];
+  public mIssue = <any>[];
   public project = <any>[];
   public macroIssues = <any>[];
   public totalTimeSpentSecs = 0;
   public totalTimeSpent;
   public timeEstimate: string;
   public percentage: number;
+  public percentageLeft: number;
+  public tasksCount = 0;
+  public completedTasksCount = 0;
+  public onGoingTasksCount = 0;
 
-  barChart: any = []
+  public timeChart: any = [];
+  public tasksChart: any = []
 
   constructor(private apiService: ApiService,
     private route: ActivatedRoute) { Chart.register(...registerables, ChartjsPluginStacked100) }
@@ -59,50 +64,64 @@ export class IssueDetailsComponent implements OnInit {
             .subscribe(
               (issue: Issue[]) => {
 
-                this.issueList = issue;
-                this.timeEstimate = this.time_convert(this.issueList.time_stats.time_estimate);
+                this.mIssue = issue;
+
+                this.tasksCount = this.tasksCount + this.mIssue.task_completion_status.count;
+                this.completedTasksCount = this.completedTasksCount + this.mIssue.task_completion_status.completed_count;
+
+                //console.log("???: ", this.mIssue)
+                this.timeEstimate = this.time_convert(this.mIssue.time_stats.time_estimate);
 
                 this.sub3 = this.apiService.getIssueLinks(this.id, this.issue_id)
                   .subscribe(
                     (macro: Issue[]) => {
 
                       this.macroIssues = macro;
+                      let timeEstimateSecs = this.mIssue.time_stats.time_estimate
 
-                      console.log("IL : ", this.issueList);
-                      let timeEstimateSecs = this.issueList.time_stats.time_estimate
+                      this.getTotalTimeSpent(this.macroIssues, timeEstimateSecs);
 
-                      console.log("TIME ESTIMATE? : ", this.issueList.time_stats.time_estimate);
+                      //console.log("%: ", this.percentage)
+                      //console.log("%: ", percentageLeft)
 
-                      this.percentage = this.getTotalTimeSpent(this.macroIssues, timeEstimateSecs);
-                      console.log("TESTE : ", this.percentage);
+                      /* console.log("TC: ", this.tasksCount)
+                      console.log("CTC: ", this.completedTasksCount)
+                      console.log("OGTC: ", this.onGoingTasksCount) */
 
-                      this.barChart = new Chart('percentchart', {
-                        type: 'bar',
+                      //DOUGHNUT CHART TIME USED
+
+                      let timeLabel: string = this.totalTimeSpent + "out of " + this.timeEstimate;
+
+                      this.timeChart = new Chart('percentcharttimeused', {
+                        type: 'doughnut',
                         data: {
-                          labels: ["%"],
+                          labels: ["Used (%)", "Available (%)"],
                           datasets: [
                             {
-                              label: 'Spent',
-                              data: [this.percentage],
-                              backgroundColor: 'rgba(255, 26, 104, 0.2)',
-                              borderColor: 'rgba(255, 26, 104, 1)',
+                              //label: 'Spent',
+                              data: [this.percentage, this.percentageLeft],
+                              backgroundColor: ['rgba(255, 26, 104, 1)', 'rgba(0, 0, 0, 1)'],
+                              borderColor: ['rgba(255, 26, 104, 1)', 'rgba(0, 0, 0, 1)'],
                               borderWidth: 1,
                             },
-                            {
+                            /* {
                               label: 'Available',
                               data: [40],
                               backgroundColor: 'rgba(0, 0, 0, 0.2)',
                               borderColor: 'rgba(0, 0, 0, 1)',
                               borderWidth: 1,
-                            },
+                            }, */
                           ],
                         },
                         options: {
                           indexAxis: 'y',
+                          rotation: 270,
+                          circumference: 180,
                           plugins: {
                             title: {
                               display: true,
-                              text: 'Time Used',
+                              text: timeLabel,
+                              position: 'bottom'
 
                             },
                             legend: {
@@ -110,11 +129,62 @@ export class IssueDetailsComponent implements OnInit {
                               position: 'right',
 
                             },
-                            stacked100: {
+                            /* stacked100: {
                               enable: true,
                               //replaceTooltipLabel: false,
                               precision: 3,
-                            }
+                            } */
+                          },
+                        }
+                      });
+
+
+                      //DOUGHNUT CHART COMPLETED TASKS
+
+                      let tasksLabel: string = this.completedTasksCount + " out of " + this.tasksCount + " tasks completed";
+
+                      this.tasksChart = new Chart('percentcharttasksnumber', {
+                        type: 'doughnut',
+                        data: {
+                          labels: ["Completed", "On Going"],
+                          datasets: [
+                            {
+                              //label: 'Spent',
+                              data: [this.completedTasksCount, this.onGoingTasksCount],
+                              backgroundColor: ['rgba(255, 26, 104, 1)', 'rgba(0, 0, 0, 1)'],
+                              borderColor: ['rgba(255, 26, 104, 1)', 'rgba(0, 0, 0, 1)'],
+                              borderWidth: 1,
+                            },
+                            /* {
+                              label: 'Available',
+                              data: [40],
+                              backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                              borderColor: 'rgba(0, 0, 0, 1)',
+                              borderWidth: 1,
+                            }, */
+                          ],
+                        },
+                        options: {
+                          indexAxis: 'y',
+                          rotation: 270,
+                          circumference: 180,
+                          plugins: {
+                            title: {
+                              display: true,
+                              text: tasksLabel,
+                              position: 'bottom'
+
+                            },
+                            legend: {
+                              display: false,
+                              position: 'right',
+
+                            },
+                            /* stacked100: {
+                              enable: true,
+                              //replaceTooltipLabel: false,
+                              precision: 3,
+                            } */
                           },
                         }
                       });
@@ -127,39 +197,14 @@ export class IssueDetailsComponent implements OnInit {
         }
       );
 
-    //this.percentage = await this.getIL()
-
-    //console.log("TESTE FORA: ", this.percentage);
-
   }
-
-  /* async getIL() {
-    this.sub = (await this.apiService.getIssueLinks(this.id, this.issue_id))
-      .subscribe(
-        async (macro: Issue[]) => {
-
-          this.macroIssues = macro;
-
-          let timeEstimateSecs = this.issueList.time_stats.time_estimate
-
-          //console.log("TIME ESTIMATE? : ", this.issueList.time_stats.time_estimate);
-
-          this.percentage = await this.getTotalTimeSpent(this.macroIssues, timeEstimateSecs);
-          console.log("T : ", this.percentage);
-          return Promise.resolve(this.percentage)
-
-          
-
-        }
-      );
-    return Promise.resolve(0)
-  } */
-
 
   getTotalTimeSpent(macros, timeEst) {
 
     macros.forEach(element => {
       this.totalTimeSpentSecs = this.totalTimeSpentSecs + element.time_stats.total_time_spent;
+      this.tasksCount = this.tasksCount + element.task_completion_status.count;
+      this.completedTasksCount = this.completedTasksCount + element.task_completion_status.completed_count;
     });
 
     this.totalTimeSpent = this.time_convert(this.totalTimeSpentSecs);
@@ -171,9 +216,10 @@ export class IssueDetailsComponent implements OnInit {
     //console.log("TU: ", tu)
 
     //this.percentage = (tu * 100 / te).toFixed(3);
-    let percentage: number = (tu * 100 / te);
+    this.percentage = (tu * 100 / te);
+    this.percentageLeft = 100 - this.percentage;
 
-    return percentage
+    this.onGoingTasksCount = this.tasksCount - this.completedTasksCount;
 
   }
 

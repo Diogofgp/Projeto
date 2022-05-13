@@ -1,6 +1,6 @@
 <div>
     <br>
-    <h1>Title : {{issueList.title}}</h1>
+    <h1>Title : {{mIssue.title}}</h1>
 </div>
 
 <br>
@@ -14,17 +14,19 @@
 <br>
 <h1>---Issue Details---</h1>
 <mat-card>
-    Name: {{issueList.title}}
+    Name: {{mIssue.title}}
     <br>
-    Id: {{issueList.iid}}
+    Id: {{mIssue.iid}}
     <br>
-    state: {{issueList.state}}
+    state: {{mIssue.state}}
     <br>
     Time Estimate: {{this.timeEstimate}}
     <br>
     Time Used: {{this.totalTimeSpent}}
     <div>
-        <canvas id="percentchart" class="percentchart"> {{barChart}}</canvas>
+        <br>
+        <canvas id="percentcharttimeused" class="percentcharttimeused"> {{timeChart}}</canvas>
+        <canvas id="percentcharttasksnumber" class="percentcharttasksnumber"> {{tasksChart}}</canvas>
         <br>
     </div>
 </mat-card>

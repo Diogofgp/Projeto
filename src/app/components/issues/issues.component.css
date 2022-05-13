@@ -1,7 +1,7 @@
 .labelchart {
     display: block;
-    max-width: 400px;
-    max-height: 300px;
+    max-width: 100px;
+    max-height: 50px;
     width: auto;
     height: auto;
 }

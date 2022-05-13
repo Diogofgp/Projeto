@@ -44,7 +44,7 @@ export class UserDetailsComponent implements OnInit {
 
           projects.forEach(element => {
 
-            this.sub = this.apiService.getProjectMembers(element.id)
+            this.sub = this.apiService.getProjectUsers(element.id)
               .subscribe(
                 (members: User[]) => {
 
